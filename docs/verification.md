@@ -8,6 +8,8 @@ Local verification: production build and TypeScript passed; four unit tests pass
 
 Reference-to-implementation decisions are documented in [redesign.md](redesign.md).
 
+Production deployment `dpl_GdjeUVbtYFT3VYrpNxtDWFtrhFXF` is ready at the existing public URL. The complete five-scenario suite passed against production in **31.2 seconds**, with no browser page errors. The implementation commit's GitHub checks passed and the production dependency audit reports zero vulnerabilities.
+
 ## Passed
 
 - Production build on Windows and on Vercel.
