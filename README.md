@@ -1,5 +1,7 @@
 # TreasureTrove
 
+[Open TreasureTrove](https://treasuretrove-tau.vercel.app) · [Source](https://github.com/dakiemdarktharr/treasuretrove)
+
 A personal workbench for electronic components. Search for a part by ID, name, type or purpose. If it is missing, create it with a picture and quantity. Keep each user's collection private, organized and available on every signed-in device.
 
 ## Features
