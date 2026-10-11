@@ -19,8 +19,10 @@
 - GitHub repository connected for subsequent deployments.
 - MongoDB connection stored as a Vercel secret, never in the source repository.
 
-## Outstanding live check
+## Live verification completed
 
-The production frontend responds, but account registration returns 503. Vercel logs show `MongoServerSelectionError`, while the same connection works locally. Atlas network access is the leading hypothesis, not yet confirmed. Inspection is pending the owner's Atlas sign-in. No Atlas network permissions have been changed.
+Atlas initially permitted only the owner's computer IP, preventing Vercel from connecting. With explicit owner approval, the `0.0.0.0/0` IP access rule was added for Vercel's dynamic outbound addresses. Atlas reported the rule as Active. Database credentials and TLS remain required.
 
-After correcting the connection, run the same end-to-end suite against the production URL and verify it passes before considering the live inventory ready.
+The complete end-to-end suite then ran against `https://treasuretrove-tau.vercel.app`: **4 passed in 14.4 seconds**. This exercised production functions and the actual Atlas database, including registration, 30-day remembered-session cookies, non-remembered sessions, two-account isolation, private images, image validation, duplicate IDs, simultaneous stock deductions, cross-origin mutation rejection, search-to-create, upload, clipboard paste, stock updates, persistence across sessions, recovery and logout.
+
+The test accounts, their sessions and their parts were removed by the suite's cleanup. No production connection blocker remains.
