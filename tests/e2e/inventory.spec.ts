@@ -3,6 +3,7 @@ import { MongoClient } from 'mongodb';
 import { loadEnvConfig } from '@next/env';
 import sharp from 'sharp';
 import { mkdir } from 'node:fs/promises';
+import { componentFixture } from '../component-fixtures';
 loadEnvConfig(process.cwd());
 test.describe.configure({ mode: 'serial' });
 const run = Date.now();
@@ -18,9 +19,7 @@ let partId: string;
 let recoveryKey: string;
 
 test.beforeAll(async ({ playwright }) => {
-  const buffer = await sharp({
-    create: { width: 300, height: 200, channels: 3, background: '#d4dde9' },
-  })
+  const buffer = await sharp(Buffer.from(componentFixture('regulator')))
     .png()
     .toBuffer();
   photo = `data:image/png;base64,${buffer.toString('base64')}`;
@@ -139,11 +138,16 @@ test('desktop search, required picture, upload, quantity controls, keyboard dial
   await mkdir('.local/screenshots', { recursive: true });
   await page.waitForLoadState('networkidle');
   await page.screenshot({ path: '.local/screenshots/login.png', fullPage: true, caret: 'initial' });
+  await page.getByRole('button', { name: 'Take it apart' }).click();
+  await expect(page.locator('.chip-lid')).toHaveCSS('transform', 'matrix(1, 0, 0, 1, 0, -150)');
+  await page.screenshot({ path: '.local/screenshots/redesign-exploded.png', fullPage: true });
+  await page.getByRole('button', { name: 'Put it together' }).click();
+  await expect(page.locator('.chip-lid')).toHaveCSS('transform', 'matrix(1, 0, 0, 1, 0, 0)');
   await page.getByRole('textbox', { name: 'Email', exact: true }).fill(email);
   await page.getByLabel('Password', { exact: true }).fill(password);
   await page.getByRole('button', { name: 'Sign in', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'Your components' })).toBeVisible();
-  await expect(page.getByRole('button', { name: /LM7805 Component/ })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'The collection.' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Open LM7805' })).toBeVisible();
   await page.getByRole('textbox', { name: 'Search components' }).fill('ESP32-WROOM-32');
   await expect(
     page.getByRole('heading', { name: 'No component matches “ESP32-WROOM-32”' }),
@@ -155,13 +159,11 @@ test('desktop search, required picture, upload, quantity controls, keyboard dial
   );
   await page.getByRole('button', { name: 'Add component', exact: true }).click();
   await expect(page.getByRole('dialog').getByRole('alert')).toContainText('Add a picture');
-  await page
-    .getByLabel('Component picture', { exact: true })
-    .setInputFiles({
-      name: 'test-part.png',
-      mimeType: 'image/png',
-      buffer: Buffer.from(photo.split(',')[1], 'base64'),
-    });
+  await page.getByLabel('Component picture', { exact: true }).setInputFiles({
+    name: 'test-part.png',
+    mimeType: 'image/png',
+    buffer: Buffer.from(photo.split(',')[1], 'base64'),
+  });
   await expect(page.getByAltText('Component preview')).toBeVisible();
   await page.getByLabel('Quantity', { exact: true }).fill('12');
   await page.getByText('More details', { exact: false }).click();
@@ -169,7 +171,9 @@ test('desktop search, required picture, upload, quantity controls, keyboard dial
   await page.getByLabel('Usage', { exact: true }).fill('Wireless sensor measurements');
   await page.getByLabel('Location', { exact: true }).fill('Drawer B2');
   await page.getByRole('button', { name: 'Add component', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'ESP32-WROOM-32', exact: true })).toBeVisible();
+  await expect(
+    page.getByRole('dialog').getByRole('heading', { name: 'ESP32-WROOM-32', exact: true }),
+  ).toBeVisible();
   await expect(page).toHaveURL(/\/parts\//);
   await page.getByLabel('Pieces to add or use').fill('2');
   await page.getByRole('button', { name: 'Use parts', exact: true }).click();

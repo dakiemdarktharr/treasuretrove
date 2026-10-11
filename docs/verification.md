@@ -1,5 +1,13 @@
 # Verification — 12 October 2026
 
+## Visual redesign
+
+The new open shelf removes the sidebar and photo frames. A horizontal purpose rail, Bricolage Grotesque / DM Mono typography, original Bauhaus-inspired mark and symbols, warm printed colors, and an original interactive exploded IC replace the first interface. Motion animates filtering, the shared part picture and quantity changes; Anime.js animates the IC layers and traces. The centered inspector includes zoom and pointer panning. Reduced motion and keyboard interactions are supported.
+
+Local verification: production build and TypeScript passed; four unit tests passed; **five end-to-end scenarios passed in 32.3 seconds**. Added coverage checks transparent WebP alpha, borderless pictures, absence of a sidebar, purpose filtering and cross-group search, zero-stock controls, view preference persistence, photo zoom, the exploded drawing in both directions, keyboard shortcuts, reduced motion and narrow-screen overflow. Browser page errors: none. Populated visual review used eight original illustrated fixtures in disposable test accounts.
+
+Reference-to-implementation decisions are documented in [redesign.md](redesign.md).
+
 ## Passed
 
 - Production build on Windows and on Vercel.

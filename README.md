@@ -13,7 +13,9 @@ A personal workbench for electronic components. Search for a part by ID, name, t
 - Search across groups, exact-ID ranking, stock filters, sorting, list and picture views.
 - One-click stock changes and bulk add/use controls. Zero-stock components remain in the collection.
 - Private component URLs and images. Accounts may use the same part ID without sharing stock.
-- Desktop-first schematic-inspired light theme, local fonts, keyboard shortcuts and reduced-motion support.
+- Desktop-first open component shelf, horizontal purpose filters, borderless transparent pictures and a focused stock inspector with image zoom.
+- Bauhaus geometry and printed-comic colors, Bricolage Grotesque typography, an original interactive exploded IC drawing, Motion layout transitions and Anime.js line animation. Local fonts and reduced-motion support.
+- Keyboard shortcuts: `/` or `Ctrl K` to search, `N` to add a part, Enter to open a single result or create an unknown ID, Escape to close the inspector. List/grid preference is remembered on each device.
 
 ## Run locally
 
@@ -60,4 +62,4 @@ End-to-end tests require the configured database. They create identifiable dispo
 
 Import this repository into Vercel as a Next.js project. Set `MONGODB_URI` as a production secret and `MONGODB_DB=treasuretrove`. The app uses the Node.js runtime in Singapore (`sin1`). GitHub pushes can trigger deployments once the repository is connected. Use an isolated database for previews if sharing preview access.
 
-The [design and UX notes](docs/design.md) document the research, UI references and design choices.
+The [redesign notes](docs/redesign.md) map animation, art and engineering references to the current interface. The [original UX research](docs/design.md) records the initial inventory workflow research.

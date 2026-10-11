@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef, type ReactNode } from 'react';
 import { X } from 'lucide-react';
+import { motion, useReducedMotion } from 'motion/react';
 export function Modal({
   children,
   title,
@@ -15,6 +16,7 @@ export function Modal({
   drawer?: boolean;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
+  const reduced = useReducedMotion();
   const closeRef = useRef(onClose);
   closeRef.current = onClose;
   useEffect(() => {
@@ -52,13 +54,21 @@ export function Modal({
         }
       }}
     >
-      <header className="modal-header">
-        <h2 id="modal-title">{title}</h2>
-        <button className="icon-button" aria-label="Close dialog" onClick={onClose}>
-          <X size={19} />
-        </button>
-      </header>
-      {children}
+      <motion.div
+        className="modal-panel"
+        layoutRoot
+        initial={{ opacity: 0, scale: reduced ? 1 : 0.94, y: reduced ? 0 : 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ type: 'spring', stiffness: 360, damping: 32 }}
+      >
+        <header className="modal-header">
+          <h2 id="modal-title">{title}</h2>
+          <button className="icon-button" aria-label="Close dialog" onClick={onClose}>
+            <X size={19} />
+          </button>
+        </header>
+        {children}
+      </motion.div>
     </dialog>
   );
 }

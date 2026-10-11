@@ -1,7 +1,8 @@
 'use client';
 import { useState } from 'react';
-import { ArrowRight, Eye, EyeOff, Check, Copy, KeyRound } from 'lucide-react';
-import { Brand, Circuit } from './brand';
+import { ArrowRight, Eye, EyeOff, Check, Copy, KeyRound, LockKeyhole } from 'lucide-react';
+import { Brand } from './brand';
+import { Assembly } from './assembly';
 
 export default function Auth() {
   const [mode, setMode] = useState<'login' | 'register' | 'recover'>('login');
@@ -46,30 +47,23 @@ export default function Auth() {
       <section className="auth-story">
         <Brand />
         <div className="story-centre">
-          <div className="technical-label">
-            <span className="status-dot" /> A place for every component
-          </div>
           <h1>
-            Good things
+            Small parts.
             <br />
-            are built
-            <br />
-            <span>from small parts.</span>
+            Endless possibilities.
           </h1>
-          <p>
-            Your components. In order.
-            <br />
-            Ready for the next idea.
-          </p>
-          <Circuit className="auth-circuit" />
+          <p>A home for the bits that make your next big thing.</p>
+          <Assembly />
         </div>
         <div className="story-footer">
-          <span>Find. Organize. Build.</span>
-          <span className="schematic-mark">+ &nbsp; ── &nbsp; +</span>
+          <span>A collection of possibilities.</span>
+          <span>Made for makers.</span>
         </div>
       </section>
       <section className="auth-panel">
-        <div className="auth-corner">Your personal workbench</div>
+        <div className="auth-corner">
+          <LockKeyhole size={14} /> Your own little corner of the workshop
+        </div>
         <div className="auth-card">
           {recoveryKey ? (
             <>
@@ -115,14 +109,11 @@ export default function Auth() {
             </>
           ) : (
             <>
-              <div className="auth-icon">
-                <span className="mini-schematic">⊕</span>
-              </div>
               <h2>
                 {mode === 'login'
-                  ? 'Back to the workbench.'
+                  ? 'Hello again.'
                   : mode === 'register'
-                    ? 'Make room for your ideas.'
+                    ? 'Make yourself at home.'
                     : 'Recover your workbench.'}
               </h2>
               <p className="auth-description">
@@ -215,7 +206,7 @@ export default function Auth() {
           )}
         </div>
         <div className="auth-bottom">
-          <span className="tiny-chip">◇</span> Your inventory stays yours.
+          <LockKeyhole size={13} /> Your parts. Your space.
         </div>
       </section>
     </main>

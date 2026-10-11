@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import '@fontsource/ibm-plex-sans/400.css';
-import '@fontsource/ibm-plex-sans/500.css';
-import '@fontsource/ibm-plex-sans/600.css';
-import '@fontsource/ibm-plex-mono/400.css';
-import '@fontsource/ibm-plex-mono/500.css';
-import '@fontsource/space-grotesk/500.css';
-import '@fontsource/space-grotesk/600.css';
+import '@fontsource/bricolage-grotesque/latin-400.css';
+import '@fontsource/bricolage-grotesque/latin-500.css';
+import '@fontsource/bricolage-grotesque/latin-600.css';
+import '@fontsource/bricolage-grotesque/latin-700.css';
+import '@fontsource/bricolage-grotesque/latin-800.css';
+import '@fontsource/dm-mono/latin-400.css';
+import '@fontsource/dm-mono/latin-500.css';
 import './globals.css';
 export const metadata: Metadata = {
   title: 'TreasureTrove — Your component workbench',
