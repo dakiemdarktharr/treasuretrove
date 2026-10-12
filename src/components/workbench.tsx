@@ -5,9 +5,10 @@ import {
   motion,
   MotionConfig,
   LayoutGroup,
-  useReducedMotion,
   useMotionValue,
   useSpring,
+  useScroll,
+  useMotionValueEvent,
 } from 'motion/react';
 import {
   Search,
@@ -31,37 +32,20 @@ import {
   ChevronDown,
   ZoomIn,
   ZoomOut,
+  CircuitBoard,
+  ArrowDown,
+  ArrowUp,
 } from 'lucide-react';
-import { Brand, PurposeSymbol } from './brand';
-import { Assembly } from './assembly';
+import { Brand } from './brand';
+import { useReducedMotion } from '@/lib/motion-preference';
+import { GroupBrowser, GroupArt } from './group-browser';
+import { useTransition, ScrambleName, RevealFooter, StockFlight } from './interactions';
 import { GROUPS, searchParts, normalizeId, type Part, type GroupName } from '@/lib/inventory';
 import PartForm from './part-form';
 import { Modal } from './modal';
 
-const shortGroups = [
-  'Power',
-  'Sensing',
-  'Control',
-  'Signals',
-  'Drive',
-  'Light',
-  'Connect',
-  'Other',
-];
-const colors = [
-  '#e8c969',
-  '#b8ccac',
-  '#c8b8da',
-  '#e8bca3',
-  '#c7cbb3',
-  '#e7d790',
-  '#b7cecb',
-  '#ded9ce',
-];
-const photoUrl = (p: Part) => `/api/parts/${p.id}/photo?v=${p.photoVersion}`;
-const groupIndex = (p: Part) => GROUPS.findIndex((g) => g.name === p.group);
+const photoUrl = (p: Part) => '/api/parts/' + p.id + '/photo?v=' + p.photoVersion;
 const spring = { type: 'spring' as const, stiffness: 340, damping: 30 };
-
 export default function Workbench({
   email,
   initialPartId,
@@ -73,9 +57,9 @@ export default function Workbench({
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState('');
   const [query, setQuery] = useState('');
-  const [group, setGroup] = useState<GroupName | 'all'>('all');
+  const [group, setGroup] = useState<GroupName | 'all' | null>(null);
   const [stock, setStock] = useState<'all' | 'available' | 'empty'>('all');
-  const [view, setView] = useState<'list' | 'grid'>('grid');
+  const [view, setView] = useState<'grid' | 'list'>('grid');
   const [sort, setSort] = useState<'id' | 'quantity' | 'recent'>('id');
   const [selectedId, setSelectedId] = useState<string | undefined>(initialPartId);
   const [form, setForm] = useState<'new' | Part | null>(null);
@@ -83,12 +67,24 @@ export default function Workbench({
   const [toast, setToast] = useState<{ text: string; error?: boolean } | null>(null);
   const [signingOut, setSigningOut] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
+  const [headerHidden, setHeaderHidden] = useState(false);
+  const [origin, setOrigin] = useState<DOMRect | undefined>();
   const searchRef = useRef<HTMLInputElement>(null);
   const accountRef = useRef<HTMLDivElement>(null);
+  const homeY = useRef(0);
   const generation = useRef(0);
   const pendingRef = useRef(new Set<string>());
   const reduced = useReducedMotion();
-
+  const transition = useTransition();
+  const { scrollY } = useScroll();
+  const lastScroll = useRef(0);
+  useMotionValueEvent(scrollY, 'change', (current) => {
+    const diff = current - lastScroll.current;
+    if (Math.abs(diff) > 7 || current < 100) {
+      setHeaderHidden(current > 150 && diff > 0);
+      lastScroll.current = current;
+    }
+  });
   const load = useCallback(async () => {
     if (pendingRef.current.size) return;
     const seq = ++generation.current;
@@ -111,36 +107,43 @@ export default function Workbench({
       if (seq === generation.current) setLoading(false);
     }
   }, []);
+
   useEffect(() => {
     void load();
     const refresh = () => {
       if (document.visibilityState === 'visible') void load();
     };
-    const interval = window.setInterval(refresh, 15000);
+    const timer = window.setInterval(refresh, 15000);
     window.addEventListener('focus', refresh);
     try {
       const saved = localStorage.getItem('tt-view');
       if (saved === 'grid' || saved === 'list') setView(saved);
     } catch {}
     return () => {
-      clearInterval(interval);
+      clearInterval(timer);
       window.removeEventListener('focus', refresh);
     };
   }, [load]);
   useEffect(() => {
     if (!toast) return;
-    const timer = setTimeout(() => setToast(null), 3500);
-    return () => clearTimeout(timer);
+    const id = setTimeout(() => setToast(null), 3500);
+    return () => clearTimeout(id);
   }, [toast]);
+  const goHome = useCallback(() => {
+    void transition('pixels', () => {
+      setSelectedId(undefined);
+      setForm(null);
+      setGroup(null);
+      setQuery('');
+      setStock('all');
+      setAccountOpen(false);
+      history.pushState(null, '', '/');
+    });
+  }, [transition]);
   useEffect(() => {
-    const outside = (e: PointerEvent) => {
-      if (!accountRef.current?.contains(e.target as Node)) setAccountOpen(false);
-    };
     const key = (e: KeyboardEvent) => {
-      const target = e.target as HTMLElement;
-      const typing = target.closest('input, textarea, select, [contenteditable]');
-      if (e.key === 'Escape') setAccountOpen(false);
       if (document.querySelector('dialog[open]')) return;
+      const typing = (e.target as HTMLElement).closest('input,textarea,select,[contenteditable]');
       if ((e.key === 'k' && (e.ctrlKey || e.metaKey)) || (e.key === '/' && !typing)) {
         e.preventDefault();
         searchRef.current?.focus();
@@ -149,20 +152,51 @@ export default function Workbench({
         e.preventDefault();
         setForm('new');
       }
+      if (e.key === 'Escape') {
+        setAccountOpen(false);
+        setQuery('');
+      }
     };
-    const pop = () => setSelectedId(location.pathname.match(/^\/parts\/([a-f0-9]{24})$/)?.[1]);
+    const pop = () => {
+      setSelectedId(location.pathname.match(/^\/parts\/([a-f0-9]{24})$/)?.[1]);
+    };
+    const outside = (e: PointerEvent) => {
+      if (!accountRef.current?.contains(e.target as Node)) setAccountOpen(false);
+    };
     window.addEventListener('keydown', key);
     window.addEventListener('popstate', pop);
     window.addEventListener('pointerdown', outside);
+    window.addEventListener('tt-home', goHome);
     return () => {
       window.removeEventListener('keydown', key);
       window.removeEventListener('popstate', pop);
       window.removeEventListener('pointerdown', outside);
+      window.removeEventListener('tt-home', goHome);
     };
-  }, []);
+  }, [goHome]);
   function select(part?: Part) {
-    setSelectedId(part?.id);
-    history.pushState(null, '', part ? `/parts/${part.id}` : '/');
+    const action = () => {
+      setSelectedId(part?.id);
+      history.pushState(null, '', part ? '/parts/' + part.id : '/');
+    };
+    if (part) void transition('iris', action);
+    else action();
+  }
+  function openGroup(value: GroupName | 'all', rect?: DOMRect) {
+    homeY.current = window.scrollY;
+    setOrigin(rect);
+    setStock('all');
+    setGroup(value);
+  }
+  function closeGroup() {
+    setGroup(null);
+    requestAnimationFrame(() => window.scrollTo({ top: homeY.current, behavior: 'instant' }));
+  }
+  function chooseView(value: 'grid' | 'list') {
+    setView(value);
+    try {
+      localStorage.setItem('tt-view', value);
+    } catch {}
   }
   function updatePart(part: Part) {
     generation.current++;
@@ -206,22 +240,15 @@ export default function Workbench({
     select();
     setToast({ text: `${part.partId} deleted` });
   }
-  function chooseGroup(value: GroupName | 'all') {
-    setGroup(value);
-    setQuery('');
-    setStock('all');
-  }
-  function chooseView(value: 'list' | 'grid') {
-    setView(value);
-    try {
-      localStorage.setItem('tt-view', value);
-    } catch {}
-  }
+
   const searched = searchParts(parts, query);
-  const visible = searched
+  const matchingGroups = query.trim()
+    ? GROUPS.filter((g) => g.name.toLowerCase().includes(query.trim().toLowerCase()))
+    : [];
+  const visible = (group ? parts : searched)
     .filter(
       (p) =>
-        (query.trim() || group === 'all' || p.group === group) &&
+        (!group || group === 'all' || p.group === group) &&
         (stock === 'all' || (stock === 'empty' ? p.quantity === 0 : p.quantity > 0)),
     )
     .sort((a, b) => {
@@ -244,28 +271,215 @@ export default function Workbench({
     !loadError &&
     query.trim() &&
     !parts.some((p) => normalizeId(p.partId) === normalizeId(query));
-  const noGlobalMatch = !!query.trim() && !searched.length;
-  const heading = query.trim()
-    ? 'Found on the shelf.'
-    : group === 'all'
-      ? 'The collection.'
-      : `${shortGroups[GROUPS.findIndex((g) => g.name === group)]}.`;
+  const inventory = (
+    <>
+      <div className="collection-toolbar">
+        <div className="stock-tabs" aria-label="Stock filters">
+          {(
+            [
+              ['all', 'All parts'],
+              ['available', 'In stock'],
+              ['empty', 'Out of stock'],
+            ] as const
+          ).map(([key, label]) => (
+            <button
+              key={key}
+              className={stock === key ? 'active' : ''}
+              aria-pressed={stock === key}
+              onClick={() => setStock(key)}
+            >
+              {label}
+              {stock === key && <motion.span layoutId="stock-tab" className="tab-underline" />}
+            </button>
+          ))}
+        </div>
+        <div className="view-controls">
+          <label className="sort-control">
+            <ArrowDownUp size={14} />
+            <select
+              aria-label="Sort components"
+              value={sort}
+              onChange={(e) => setSort(e.target.value as typeof sort)}
+            >
+              <option value="id">Part ID</option>
+              <option value="quantity">Quantity</option>
+              <option value="recent">Recently changed</option>
+            </select>
+          </label>
+          <div className="view-toggle">
+            <button
+              aria-label="Grid view"
+              aria-pressed={view === 'grid'}
+              className={view === 'grid' ? 'active' : ''}
+              onClick={() => chooseView('grid')}
+            >
+              <LayoutGrid size={17} />
+            </button>
+            <button
+              aria-label="List view"
+              aria-pressed={view === 'list'}
+              className={view === 'list' ? 'active' : ''}
+              onClick={() => chooseView('list')}
+            >
+              <List size={18} />
+            </button>
+          </div>
+        </div>
+      </div>
 
+      <div role="status" className="sr-only">
+        {loading ? 'Loading inventory' : visible.length + ' components found'}
+      </div>
+      {loadError && (
+        <div className="error-banner" role="alert">
+          <span>{loadError}</span>
+          <button className="text-button" onClick={() => void load()}>
+            <RefreshCw size={14} /> Retry
+          </button>
+        </div>
+      )}
+      {loading ? (
+        <div className="loading-shelf">
+          <LoaderCircle className="spin" size={24} />
+        </div>
+      ) : !visible.length ? (
+        <div className="catalog-empty">
+          <PackageOpen size={30} strokeWidth={1.3} />
+          <h3>
+            {query && !group
+              ? 'No component matches “' + query + '”'
+              : stock === 'empty'
+                ? 'No out-of-stock components'
+                : 'No components yet'}
+          </h3>
+          {stock !== 'empty' && !group && (
+            <button className="primary" disabled={!!loadError} onClick={() => setForm('new')}>
+              <Plus size={16} /> New component
+            </button>
+          )}
+        </div>
+      ) : view === 'list' ? (
+        <div className="table-wrap">
+          <table className="parts-table">
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Group</th>
+                <th>Location</th>
+                <th>On hand</th>
+                <th>
+                  <span className="sr-only">Open</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {visible.map((part) => (
+                <tr key={part.id}>
+                  <td>
+                    <button className="part-link" onClick={() => select(part)}>
+                      <img className="part-thumb" src={photoUrl(part)} alt="" loading="lazy" />
+                      <span>
+                        <strong>{part.partId}</strong>
+                        <span className="part-subtitle">
+                          {part.name || part.type || 'Component'}
+                        </span>
+                      </span>
+                    </button>
+                  </td>
+                  <td>
+                    <span className="purpose-tag">
+                      <CircuitBoard size={18} />
+                      {part.group}
+                    </span>
+                    {part.usage && <span className="usage-preview">{part.usage}</span>}
+                  </td>
+                  <td className="location">{part.location || '—'}</td>
+                  <td>
+                    <StockControl part={part} pending={pending.has(part.id)} adjust={adjust} />
+                  </td>
+                  <td>
+                    <button
+                      className="icon-button"
+                      aria-label={`Open ${part.partId}`}
+                      onClick={() => select(part)}
+                    >
+                      <ArrowUpRight size={18} />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <motion.div layout className="parts-grid">
+          <AnimatePresence mode="popLayout" initial={false}>
+            {visible.map((part) => (
+              <motion.article
+                layout="position"
+                key={part.id}
+                className="part-card"
+                initial={{ opacity: 0, scale: reduced ? 1 : 0.94 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: reduced ? 1 : 0.94 }}
+                transition={spring}
+              >
+                <button
+                  className="card-open"
+                  aria-label={`Open ${part.partId}`}
+                  onClick={() => select(part)}
+                >
+                  <div className="card-photo">
+                    <motion.img
+                      layoutId={`photo-${part.id}`}
+                      src={photoUrl(part)}
+                      alt={part.partId}
+                      loading="lazy"
+                      transition={spring}
+                    />
+                    <span className="card-open-icon">
+                      <ArrowUpRight size={18} />
+                    </span>
+                    {part.quantity === 0 && <span className="empty-stock-label">Out of stock</span>}
+                  </div>
+                  <div className="card-info">
+                    <h3>{part.partId}</h3>
+                    <p>{part.name || part.type || 'Component'}</p>
+                  </div>
+                </button>
+                <div className="card-bottom">
+                  <span className="card-purpose" title={part.group}>
+                    <CircuitBoard size={16} />
+                    {part.group}
+                  </span>
+                  <StockControl part={part} pending={pending.has(part.id)} adjust={adjust} />
+                </div>
+              </motion.article>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+      )}
+    </>
+  );
   return (
     <MotionConfig reducedMotion="user" transition={spring}>
       <LayoutGroup>
-        <div className="app-shell">
-          <header className="app-header">
-            <a href="/" className="brand-link" aria-label="TreasureTrove home">
+        <div className="app-shell catalog-shell">
+          <motion.header
+            className="app-header"
+            animate={{ y: headerHidden && !accountOpen ? '-110%' : '0%' }}
+            transition={{ duration: reduced ? 0 : 0.25 }}
+            onFocusCapture={() => setHeaderHidden(false)}
+          >
+            <button onClick={goHome} className="brand-link" aria-label="TreasureTrove home">
               <Brand />
-            </a>
+            </button>
             <div className="header-right">
+              <button className="text-button header-collection" onClick={() => openGroup('all')}>
+                All components <span className="header-count">{parts.length}</span>
+              </button>
               <span className="sync-status">
-                {pending.size ? (
-                  <LoaderCircle size={13} className="spin" />
-                ) : (
-                  <span className={`status-dot ${loadError ? 'offline' : ''}`} />
-                )}{' '}
+                <span className={'status-dot ' + (loadError ? 'offline' : '')} />
                 {loadError
                   ? 'Offline'
                   : pending.size
@@ -281,7 +495,7 @@ export default function Workbench({
                   aria-expanded={accountOpen}
                   onClick={() => setAccountOpen(!accountOpen)}
                 >
-                  <span className="avatar">{email[0].toUpperCase()}</span>
+                  <ScrambleName name={email.split('@')[0]} />
                   <ChevronDown size={14} />
                 </button>
                 {accountOpen && (
@@ -294,43 +508,37 @@ export default function Workbench({
                         try {
                           const r = await fetch('/api/auth/logout', { method: 'POST' });
                           if (!r.ok) throw new Error();
-                          window.location.assign('/login');
+                          await transition('iris', () => window.location.assign('/login'));
                         } catch {
                           setToast({ text: 'Could not sign out. Try again.', error: true });
                           setSigningOut(false);
                         }
                       }}
                     >
-                      <LogOut size={16} /> Sign out
+                      <LogOut size={16} />
+                      Sign out
                     </button>
                   </div>
                 )}
               </div>
             </div>
-          </header>
-          <main className="workbench">
-            <section className="collection-heading">
-              <div>
-                <h1>{heading}</h1>
-                <p>
-                  {loading ? (
-                    'Getting your parts ready…'
-                  ) : (
-                    <>
-                      {parts.length} components <span className="small-dot" />{' '}
-                      {parts.reduce((sum, p) => sum + p.quantity, 0).toLocaleString()} pieces in
-                      stock
-                    </>
-                  )}
-                </p>
-              </div>
-              <div className="find-and-add">
-                <div className="search-area">
-                  <Search size={20} />
+          </motion.header>
+          <div className="catalog-page">
+            <main className="workbench">
+              <section className="search-hero">
+                <div className="search-heading">
+                  <h1>Components</h1>
+                  <button className="primary" onClick={() => setForm('new')}>
+                    <Plus size={18} /> New component
+                  </button>
+                </div>
+                <div className="home-search">
+                  <Search size={28} strokeWidth={1.5} />
                   <input
                     ref={searchRef}
                     aria-label="Search components"
-                    placeholder="An ID, a name, an idea…"
+                    disabled={loading}
+                    placeholder="Find a part, ID, or group"
                     value={query}
                     onChange={(e) => {
                       setQuery(e.target.value);
@@ -340,7 +548,9 @@ export default function Workbench({
                       if (e.key === 'Escape') setQuery('');
                       if (e.key === 'Enter') {
                         e.preventDefault();
-                        if (noGlobalMatch && canCreate) setForm('new');
+                        if (matchingGroups.length === 1 && !searched.length)
+                          openGroup(matchingGroups[0].name);
+                        else if (canCreate && !searched.length) setForm('new');
                         else if (visible.length === 1) select(visible[0]);
                       }
                     }}
@@ -354,328 +564,131 @@ export default function Workbench({
                         searchRef.current?.focus();
                       }}
                     >
-                      <X size={16} />
+                      <X size={20} />
                     </button>
                   ) : (
                     <kbd>/</kbd>
                   )}
                 </div>
-                <motion.button
-                  className="primary new-button"
-                  whileTap={reduced ? undefined : { scale: 0.95 }}
-                  onClick={() => setForm('new')}
-                >
-                  <Plus size={19} /> New component
-                </motion.button>
-              </div>
-            </section>
-            <nav className="purpose-rail" aria-label="Purpose groups">
-              {[
-                { name: 'all', label: 'Everything', hint: 'All components' },
-                ...GROUPS.map((g, i) => ({ name: g.name, label: shortGroups[i], hint: g.hint })),
-              ].map((g, i) => {
-                const active = !query.trim() && group === g.name;
-                return (
+                <div className="search-meta">
+                  <span>
+                    {parts.length} components <span className="small-dot" />{' '}
+                    {parts.reduce((s, p) => s + p.quantity, 0).toLocaleString()} pieces
+                  </span>
                   <button
-                    key={g.name}
-                    className={`purpose-button ${active ? 'active' : ''}`}
-                    aria-label={g.name === 'all' ? 'All components' : g.name}
-                    aria-pressed={active}
-                    title={g.hint}
-                    onClick={() => chooseGroup(g.name as GroupName | 'all')}
-                    style={
-                      { '--token-color': i === 0 ? '#e4dcc5' : colors[i - 1] } as CSSProperties
+                    className="text-button"
+                    onClick={() =>
+                      document
+                        .getElementById('groups')
+                        ?.scrollIntoView({ behavior: reduced ? 'instant' : 'smooth' })
                     }
                   >
-                    {active && (
-                      <motion.span
-                        layoutId="purpose-selection"
-                        className="purpose-selection"
-                        transition={spring}
-                      />
-                    )}
-                    <span className={`purpose-shape shape-${i % 4}`}>
-                      <PurposeSymbol index={i - 1} />
-                    </span>
-                    <span className="purpose-label">
-                      {g.label}
-                      <small>
-                        {i === 0 ? parts.length : parts.filter((p) => p.group === g.name).length}
-                      </small>
-                    </span>
-                  </button>
-                );
-              })}
-            </nav>
-            <div className="collection-toolbar">
-              <div className="stock-tabs" aria-label="Stock filters">
-                {(
-                  [
-                    ['all', 'All parts'],
-                    ['available', 'In stock'],
-                    ['empty', 'Out of stock'],
-                  ] as const
-                ).map(([key, label]) => (
-                  <button
-                    key={key}
-                    className={stock === key ? 'active' : ''}
-                    aria-pressed={stock === key}
-                    onClick={() => setStock(key)}
-                  >
-                    {label}
-                    {stock === key && (
-                      <motion.span layoutId="stock-tab" className="tab-underline" />
-                    )}
-                  </button>
-                ))}
-              </div>
-              <div className="view-controls">
-                <label className="sort-control">
-                  <ArrowDownUp size={14} />
-                  <select
-                    aria-label="Sort components"
-                    value={sort}
-                    onChange={(e) => setSort(e.target.value as typeof sort)}
-                  >
-                    <option value="id">Part ID</option>
-                    <option value="quantity">Quantity</option>
-                    <option value="recent">Recently changed</option>
-                  </select>
-                </label>
-                <div className="view-toggle">
-                  <button
-                    aria-label="Grid view"
-                    aria-pressed={view === 'grid'}
-                    className={view === 'grid' ? 'active' : ''}
-                    onClick={() => chooseView('grid')}
-                  >
-                    <LayoutGrid size={17} />
-                  </button>
-                  <button
-                    aria-label="List view"
-                    aria-pressed={view === 'list'}
-                    className={view === 'list' ? 'active' : ''}
-                    onClick={() => chooseView('list')}
-                  >
-                    <List size={18} />
+                    Browse groups <ArrowDown size={16} />
                   </button>
                 </div>
-              </div>
-            </div>
-            {query.trim() && (
-              <div className="search-context">
-                <span>
-                  {searched.length} {searched.length === 1 ? 'match' : 'matches'} across your
-                  collection
-                </span>
-                {canCreate && !!searched.length && (
-                  <button className="text-button" onClick={() => setForm('new')}>
-                    <Plus size={14} /> Add “{query.trim()}”
-                  </button>
-                )}
-              </div>
-            )}
-            <div role="status" className="sr-only">
-              {loading ? 'Loading inventory' : `${visible.length} components found`}
-            </div>
-            {loadError && (
-              <div className="error-banner" role="alert">
-                <span>{loadError}</span>
-                <button className="text-button" onClick={() => void load()}>
-                  <RefreshCw size={14} /> Retry
-                </button>
-              </div>
-            )}
-            {loading ? (
-              <div className="loading-shelf">
-                <LoaderCircle size={28} className="spin" />
-                <span>Opening the collection</span>
-              </div>
-            ) : !visible.length ? (
-              <section
-                className={`empty-state ${parts.length === 0 && !query ? 'first-part' : ''}`}
-              >
-                {noGlobalMatch ? (
-                  <>
-                    <div className="empty-symbol">
-                      <Search size={32} />
-                    </div>
-                    <h2>No component matches “{query}”</h2>
-                    <p>A new find? Give it a place in your collection.</p>
-                    <button
-                      className="primary"
-                      disabled={!!loadError}
-                      onClick={() => setForm('new')}
-                    >
-                      <Plus size={17} /> New component <CornerDownLeft size={14} />
-                    </button>
-                  </>
-                ) : parts.length === 0 && group === 'all' && stock === 'all' ? (
-                  <>
-                    <Assembly compact />
-                    <div className="empty-copy">
-                      <h2>
-                        Every great build
-                        <br />
-                        starts with a little part.
-                      </h2>
-                      <p>
-                        Add a picture, an ID, and how many you have.
-                        <br />
-                        We’ll keep a place for the possibilities.
-                      </p>
-                      <button
-                        className="primary"
-                        disabled={!!loadError}
-                        onClick={() => setForm('new')}
-                      >
-                        <Plus size={17} /> Add your first component
-                      </button>
-                      <span className="empty-hint">Or search for a part above to get started.</span>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <div className="empty-symbol">
-                      <PackageOpen size={32} />
-                    </div>
-                    <h2>
-                      {stock === 'empty' ? 'Nothing out of stock.' : 'A little room to grow.'}
-                    </h2>
-                    <p>
-                      {stock === 'empty'
-                        ? 'Your collection is ready to build.'
-                        : 'There are no parts in this selection yet.'}
-                    </p>
-                    <button className="secondary" onClick={() => chooseGroup('all')}>
-                      <ArrowLeft size={15} /> Show all components
-                    </button>
-                  </>
-                )}
               </section>
-            ) : view === 'list' ? (
-              <div className="table-wrap">
-                <table className="parts-table">
-                  <thead>
-                    <tr>
-                      <th>Component</th>
-                      <th>Purpose</th>
-                      <th>Location</th>
-                      <th>On hand</th>
-                      <th>
-                        <span className="sr-only">Open</span>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {visible.map((part) => (
-                      <tr key={part.id}>
-                        <td>
-                          <button className="part-link" onClick={() => select(part)}>
-                            <img
-                              className="part-thumb"
-                              src={photoUrl(part)}
-                              alt=""
-                              loading="lazy"
-                            />
-                            <span>
-                              <strong>{part.partId}</strong>
-                              <span className="part-subtitle">
-                                {part.name || part.type || 'Component'}
-                              </span>
+              {!query.trim() && loadError && (
+                <div className="error-banner" role="alert">
+                  <span>{loadError}</span>
+                  <button className="text-button" onClick={() => void load()}>
+                    <RefreshCw size={14} />
+                    Retry
+                  </button>
+                </div>
+              )}
+              {query.trim() ? (
+                <section className="search-results">
+                  {matchingGroups.length > 0 && (
+                    <>
+                      <div className="results-heading">
+                        <h2>
+                          Groups <span>{matchingGroups.length}</span>
+                        </h2>
+                      </div>
+                      <div className="matching-groups">
+                        {matchingGroups.map((g) => (
+                          <button
+                            key={g.name}
+                            className="group-card"
+                            aria-label={`Open ${g.name} group`}
+                            onClick={(e) =>
+                              openGroup(g.name, e.currentTarget.getBoundingClientRect())
+                            }
+                          >
+                            <GroupArt name={g.name} />
+                            <span className="group-label">
+                              <strong>{g.name}</strong>
+                              <span>{parts.filter((p) => p.group === g.name).length}</span>
                             </span>
                           </button>
-                        </td>
-                        <td>
-                          <span className="purpose-tag">
-                            <PurposeSymbol index={groupIndex(part)} size={18} />
-                            {part.group}
-                          </span>
-                          {part.usage && <span className="usage-preview">{part.usage}</span>}
-                        </td>
-                        <td className="location">{part.location || '—'}</td>
-                        <td>
-                          <StockControl
-                            part={part}
-                            pending={pending.has(part.id)}
-                            adjust={adjust}
-                          />
-                        </td>
-                        <td>
-                          <button
-                            className="icon-button"
-                            aria-label={`Open ${part.partId}`}
-                            onClick={() => select(part)}
-                          >
-                            <ArrowUpRight size={18} />
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            ) : (
-              <motion.div layout className="parts-grid">
-                <AnimatePresence mode="popLayout" initial={false}>
-                  {visible.map((part) => (
-                    <motion.article
-                      layout="position"
-                      key={part.id}
-                      className="part-card"
-                      initial={{ opacity: 0, scale: reduced ? 1 : 0.94 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: reduced ? 1 : 0.94 }}
-                      transition={spring}
-                    >
-                      <button
-                        className="card-open"
-                        aria-label={`Open ${part.partId}`}
-                        onClick={() => select(part)}
-                      >
-                        <div className="card-photo">
-                          <motion.img
-                            layoutId={`photo-${part.id}`}
-                            src={photoUrl(part)}
-                            alt={part.partId}
-                            loading="lazy"
-                            transition={spring}
-                          />
-                          <span className="card-open-icon">
-                            <ArrowUpRight size={18} />
-                          </span>
-                          {part.quantity === 0 && (
-                            <span className="empty-stock-label">Out of stock</span>
-                          )}
-                        </div>
-                        <div className="card-info">
-                          <h3>{part.partId}</h3>
-                          <p>{part.name || part.type || 'Component'}</p>
-                        </div>
-                      </button>
-                      <div className="card-bottom">
-                        <span className="card-purpose" title={part.group}>
-                          <PurposeSymbol index={groupIndex(part)} size={16} />
-                          {shortGroups[groupIndex(part)]}
-                        </span>
-                        <StockControl part={part} pending={pending.has(part.id)} adjust={adjust} />
+                        ))}
                       </div>
-                    </motion.article>
-                  ))}
-                </AnimatePresence>
-              </motion.div>
-            )}
-            <footer className="inventory-footer">
+                    </>
+                  )}
+                  <div className="results-heading">
+                    <h2>
+                      Search results <span>{searched.length}</span>
+                    </h2>
+                    {canCreate && searched.length > 0 && (
+                      <button className="text-button" onClick={() => setForm('new')}>
+                        <Plus size={15} /> New “{query.trim()}”
+                      </button>
+                    )}
+                  </div>
+                  {inventory}
+                </section>
+              ) : (
+                <section id="groups">
+                  <GroupBrowser parts={parts} onOpen={openGroup} />
+                </section>
+              )}
+            </main>
+          </div>
+          <RevealFooter>
+            <Brand />
+            <div className="footer-shortcuts">
               <span>
-                {visible.length
-                  ? `${visible.length} components on the shelf`
-                  : 'A place for the things you make.'}
+                <kbd>/</kbd> Search
               </span>
               <span>
-                <kbd>/</kbd> Search <kbd>N</kbd> New part <kbd>↵</kbd> Open
+                <kbd>N</kbd> New component
               </span>
-            </footer>
-          </main>
+              <span>
+                <kbd>Esc</kbd> Back
+              </span>
+            </div>
+            <button
+              className="text-button"
+              onClick={() => window.scrollTo({ top: 0, behavior: reduced ? 'instant' : 'smooth' })}
+            >
+              Back to search <ArrowUp size={17} />
+            </button>
+          </RevealFooter>
+          {group && (
+            <Modal
+              title={group === 'all' ? 'All components' : group}
+              onClose={closeGroup}
+              catalog
+              origin={origin}
+            >
+              <div className="group-inventory">
+                <div className="group-inventory-heading">
+                  {group !== 'all' && <GroupArt name={group} />}
+                  <div>
+                    <h2>{group === 'all' ? 'All components' : group}</h2>
+                    <p>
+                      {parts.filter((p) => group === 'all' || p.group === group).length} components
+                    </p>
+                  </div>
+                  <button className="primary" onClick={() => setForm('new')}>
+                    <Plus size={16} />
+                    New component
+                  </button>
+                </div>
+                {inventory}
+              </div>
+            </Modal>
+          )}
           {selectedId &&
             !loading &&
             !form &&
@@ -691,10 +704,10 @@ export default function Workbench({
               />
             ) : (
               <Modal title="Component not found" onClose={() => select()}>
-                <div className="part-form-body">
+                <div className="catalog-empty">
                   <p>This component isn’t in your inventory.</p>
-                  <button className="primary" onClick={() => select()}>
-                    Back to inventory
+                  <button className="secondary" onClick={() => select()}>
+                    Back
                   </button>
                 </div>
               </Modal>
@@ -702,30 +715,31 @@ export default function Workbench({
           {form && (
             <PartForm
               initialId={query.trim()}
+              initialGroup={group && group !== 'all' ? group : ''}
               part={form === 'new' ? undefined : form}
               onClose={() => setForm(null)}
               onSaved={(part) => {
-                const wasNew = form === 'new';
                 updatePart(part);
                 setForm(null);
                 setQuery('');
-                setGroup('all');
                 setStock('all');
                 select(part);
-                setToast({
-                  text: wasNew ? `${part.partId} added to your collection` : 'Component updated',
-                });
+                setToast({ text: form === 'new' ? part.partId + ' added' : 'Component updated' });
               }}
             />
           )}
           <AnimatePresence>
             {toast && (
               <motion.div
-                className={`toast ${toast.error ? 'toast-error' : ''}`}
-                role="status"
-                initial={{ opacity: 0, y: reduced ? 0 : 18, scale: reduced ? 1 : 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: reduced ? 0 : 8 }}
+                popover="manual"
+                ref={(node) => {
+                  if (node && !node.matches(':popover-open')) node.showPopover();
+                }}
+                className={'toast ' + (toast.error ? 'toast-error' : '')}
+                role={toast.error ? 'alert' : 'status'}
+                initial={{ opacity: 0, y: reduced ? 0 : 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 8 }}
               >
                 {toast.error ? <X size={17} /> : <Check size={17} />}
                 <span>{toast.text}</span>
@@ -740,7 +754,6 @@ export default function Workbench({
     </MotionConfig>
   );
 }
-
 function Quantity({ value }: { value: number }) {
   const reduced = useReducedMotion();
   return (
@@ -780,7 +793,8 @@ function StockControl({
       >
         <Minus size={13} />
       </button>
-      <span aria-label={`${part.quantity} available`}>
+      <span className="stock-target" aria-label={`${part.quantity} available`}>
+        <StockFlight value={part.quantity} photo={photoUrl(part)} />
         <Quantity value={part.quantity} />
       </span>
       <button
@@ -865,7 +879,7 @@ function PartDetail({
         <div className="detail-visual">
           <InspectPhoto part={part} />
           <span className="detail-visual-caption">
-            <PurposeSymbol index={groupIndex(part)} size={19} />
+            <CircuitBoard size={19} />
             {part.group}
           </span>
         </div>
@@ -893,6 +907,7 @@ function PartDetail({
               </span>
             </div>
             <div className="stock-number" aria-live="polite">
+              <StockFlight value={part.quantity} photo={photoUrl(part)} />
               <Quantity value={part.quantity} />
               <span>pieces</span>
             </div>
@@ -927,10 +942,12 @@ function PartDetail({
             {!valid && <p className="form-error">Enter a whole number from 1 to 1,000,000.</p>}
           </div>
           <dl className="part-metadata">
-            <div>
-              <dt>Usage</dt>
-              <dd>{part.usage || 'Not added yet'}</dd>
-            </div>
+            {part.usage && (
+              <div>
+                <dt>Usage</dt>
+                <dd>{part.usage}</dd>
+              </div>
+            )}
             {part.type && (
               <div>
                 <dt>Type</dt>

@@ -1,7 +1,7 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
 import { ImagePlus, Upload, ChevronDown, LoaderCircle, ArrowUpRight } from 'lucide-react';
-import { GROUPS, suggestGroup, type Part, type GroupName } from '@/lib/inventory';
+import { GROUPS, FAMILIES, suggestGroup, type Part, type GroupName } from '@/lib/inventory';
 import { Modal } from './modal';
 
 export async function imageData(file: File): Promise<string> {
@@ -27,11 +27,13 @@ export async function imageData(file: File): Promise<string> {
 
 export default function PartForm({
   initialId = '',
+  initialGroup = '',
   part,
   onClose,
   onSaved,
 }: {
   initialId?: string;
+  initialGroup?: GroupName | '';
   part?: Part;
   onClose: () => void;
   onSaved: (part: Part) => void;
@@ -39,7 +41,7 @@ export default function PartForm({
   const [partId, setPartId] = useState(part?.partId || initialId);
   const [usage, setUsage] = useState(part?.usage || '');
   const [type, setType] = useState(part?.type || '');
-  const [group, setGroup] = useState<GroupName | ''>(part?.group || '');
+  const [group, setGroup] = useState<GroupName | ''>(part?.group || initialGroup);
   const [photo, setPhoto] = useState('');
   const [imageBusy, setImageBusy] = useState(false);
   const [drag, setDrag] = useState(false);
@@ -203,6 +205,19 @@ export default function PartForm({
                 />
               </label>
             )}
+            <label>
+              Component group
+              <select value={group} onChange={(e) => setGroup(e.target.value as GroupName | '')}>
+                <option value="">Automatic · {suggestGroup(usage, type, partId)}</option>
+                {FAMILIES.map((family) => (
+                  <optgroup key={family} label={family}>
+                    {GROUPS.filter((g) => g.family === family).map((g) => (
+                      <option key={g.name}>{g.name}</option>
+                    ))}
+                  </optgroup>
+                ))}
+              </select>
+            </label>
           </div>
           <details className="optional-details" open={part ? true : undefined}>
             <summary>
@@ -239,15 +254,6 @@ export default function PartForm({
                   maxLength={500}
                   rows={2}
                 />
-              </label>
-              <label>
-                Purpose group
-                <select value={group} onChange={(e) => setGroup(e.target.value as GroupName | '')}>
-                  <option value="">Automatic · {suggestGroup(usage, type, partId)}</option>
-                  {GROUPS.map((g) => (
-                    <option key={g.name}>{g.name}</option>
-                  ))}
-                </select>
               </label>
               <label>
                 Location

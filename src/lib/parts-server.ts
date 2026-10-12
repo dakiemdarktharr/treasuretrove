@@ -2,7 +2,7 @@ import sharp from 'sharp';
 import { ObjectId } from 'mongodb';
 import { randomUUID } from 'node:crypto';
 import { ApiError } from './security';
-import { partSchema, normalizeId, suggestGroup } from './inventory';
+import { partSchema, normalizeId, suggestGroup, resolveGroup } from './inventory';
 import type { PartRecord } from './db';
 
 export const publicPart = (p: PartRecord) => ({
@@ -11,7 +11,7 @@ export const publicPart = (p: PartRecord) => ({
   name: p.name,
   type: p.type,
   usage: p.usage,
-  group: p.group,
+  group: resolveGroup(p.group, p.usage, p.type, p.partId),
   location: p.location,
   notes: p.notes,
   quantity: p.quantity,

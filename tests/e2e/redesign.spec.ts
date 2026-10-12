@@ -23,10 +23,11 @@ test.afterAll(async () => {
   }
 });
 
-test('purpose shelf, transparent pictures, inspector, quick stock, keyboard and reduced motion', async ({
+test('group posters, drag selection, modal return position, stock arcs, pixel home and reduced motion', async ({
   page,
   context,
 }) => {
+  test.setTimeout(120000);
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
   const signup = await context.request.post(`${base}/api/auth/register`, {
@@ -34,98 +35,144 @@ test('purpose shelf, transparent pictures, inspector, quick stock, keyboard and 
     data: { email, password: 'Design-test-only-123!', remember: false },
   });
   expect(signup.status()).toBe(200);
-  const entries = [
-    ['ATMEGA328P', '8-bit microcontroller', 'Compute and control', 12, 'chip'],
-    ['BME280', 'Temperature & humidity sensor', 'Sense the physical world', 4, 'sensor'],
-    ['CAP-100UF', '100 μF electrolytic capacitor', 'Filter supply ripple', 24, 'capacitor'],
-    ['LED-5MM', 'Diffused red LED', 'Light and display', 48, 'led'],
-    ['LM7805', '5 V voltage regulator', 'Regulate power', 6, 'regulator'],
-    ['R-220', '220 Ω carbon film resistor', 'Limit LED current', 80, 'resistor'],
-    ['NE555', 'Precision timer', 'Signal timing', 0, 'chip'],
-    ['IRF520', 'N-channel MOSFET', 'Switch a motor load', 7, 'regulator'],
-  ] as const;
-  for (const [partId, name, usage, quantity, kind] of entries) {
+  await page.goto('/');
+  await expect(page.locator('.group-card')).toHaveCount(56);
+  await expect(page.locator('.part-card')).toHaveCount(0);
+  await expect(page.locator('.username')).toHaveText(email.split('@')[0]);
+  await expect(page.locator('aside,.assembly,.first-part')).toHaveCount(0);
+  await expect(page.locator('html')).toHaveClass(/lenis/);
+  await mkdir('.local/screenshots', { recursive: true });
+  await page.screenshot({ path: '.local/screenshots/catalog-empty.png' });
+
+  // Exactly four fully visible posters; dragging must not accidentally open a group.
+  const track = page.locator('.group-track').first();
+  const rect = await track.boundingBox();
+  expect(rect).toBeTruthy();
+  const visible = await track.locator('.group-card').evaluateAll((cards) => {
+    const outer = cards[0].parentElement!.getBoundingClientRect();
+    return cards.filter((c) => {
+      const r = c.getBoundingClientRect();
+      return r.left >= outer.left - 1 && r.right <= outer.right + 1;
+    }).length;
+  });
+  expect(visible).toBe(4);
+  await page.mouse.move(rect!.x + rect!.width * 0.75, rect!.y + 130);
+  await page.mouse.down();
+  await page.mouse.move(rect!.x + rect!.width * 0.3, rect!.y + 130, { steps: 15 });
+  await page.mouse.up();
+  await expect.poll(() => track.evaluate((el) => el.scrollLeft)).toBeGreaterThan(100);
+  await expect(page.locator('.modal[open]')).toHaveCount(0);
+  await page.getByRole('button', { name: 'Previous Passive components groups' }).click();
+  await expect.poll(() => track.evaluate((el) => el.scrollLeft)).toBeLessThan(2);
+  await page.getByRole('button', { name: 'Open Resistors group' }).focus();
+  await page.keyboard.press('ArrowRight');
+  await expect(page.getByRole('button', { name: 'Open Potentiometers group' })).toBeFocused();
+
+  // A group can be found even when the inventory is empty.
+  await page.getByRole('textbox', { name: 'Search components' }).fill('IMU');
+  await page.getByRole('button', { name: 'Open IMUs group' }).click();
+  await expect(page.getByRole('dialog', { name: 'IMUs', exact: true })).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(page.locator('.modal[open]')).toHaveCount(0);
+  await page.getByRole('button', { name: 'Clear search' }).click();
+
+  // Fixtures exist only in this disposable account, never in the product's default inventory.
+  for (const [partId, type, quantity, kind] of [
+    ['LM7805', 'Linear regulator', 6, 'regulator'],
+    ['NE555', 'Timer', 0, 'chip'],
+  ] as const) {
     const buffer = await sharp(Buffer.from(componentFixture(kind, partId)))
       .png()
       .toBuffer();
-    const result = await context.request.post(`${base}/api/parts`, {
+    const r = await context.request.post(`${base}/api/parts`, {
       headers: { Origin: base },
-      data: {
-        partId,
-        name,
-        usage,
-        quantity,
-        photo: `data:image/png;base64,${buffer.toString('base64')}`,
-        location: 'Drawer A2',
-      },
+      data: { partId, type, quantity, photo: `data:image/png;base64,${buffer.toString('base64')}` },
     });
-    expect(result.status()).toBe(201);
-    const part = (await result.json()).part;
+    expect(r.status()).toBe(201);
+    const part = (await r.json()).part;
     const stored = await context.request.get(`${base}/api/parts/${part.id}/photo`);
     expect((await sharp(await stored.body()).metadata()).hasAlpha).toBe(true);
   }
-  await page.goto('/');
-  await expect(page.locator('.part-card')).toHaveCount(8);
-  await page.waitForLoadState('networkidle');
-  await mkdir('.local/screenshots', { recursive: true });
-  await page.screenshot({ path: '.local/screenshots/redesign-shelf.png', fullPage: true });
-  await expect(page.locator('.card-photo').first()).toHaveCSS(
-    'background-color',
-    'rgba(0, 0, 0, 0)',
-  );
-  await expect(page.locator('.card-photo').first()).toHaveCSS('border-top-width', '0px');
-  await expect(page.locator('aside')).toHaveCount(0);
-  await page.getByRole('button', { name: 'Sensing & measurement', exact: true }).click();
-  await expect(page.locator('.part-card')).toHaveCount(1);
-  await expect(page.getByRole('button', { name: 'Open BME280' })).toBeVisible();
-  await page.getByRole('textbox', { name: 'Search components' }).fill('LM7805');
-  await expect(page.getByRole('button', { name: 'Open LM7805' })).toBeVisible();
-  await page.getByRole('textbox', { name: 'Search components' }).press('Enter');
-  await expect(page.getByRole('dialog')).toBeVisible();
-  await expect(page.getByRole('dialog').locator('.detail-photo img')).toHaveCSS(
-    'border-top-width',
-    '0px',
-  );
-  await page.screenshot({ path: '.local/screenshots/redesign-inspector.png', fullPage: true });
+  await page.reload();
+  const groupButton = page.getByRole('button', { name: 'Open Linear regulators group' });
+  await groupButton.scrollIntoViewIfNeeded();
+  await page.mouse.wheel(0, 200);
+  await expect
+    .poll(() => page.locator('.app-header').evaluate((el) => el.getBoundingClientRect().bottom))
+    .toBeLessThan(0);
+  await groupButton.scrollIntoViewIfNeeded();
+  await groupButton.click();
+  const group = page.getByRole('dialog', { name: 'Linear regulators', exact: true });
+  await expect(group.locator('.part-card')).toHaveCount(1);
+  const homeY = await page.evaluate(() => window.scrollY);
+  await expect(group.locator('.card-photo')).toHaveCSS('border-top-width', '0px');
+  await expect(group.locator('.card-photo')).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+  await group.getByRole('button', { name: 'Add one LM7805' }).click();
+  await expect(group.locator('.stock-flight')).toBeVisible();
+  await expect(group.getByLabel('7 available')).toBeVisible();
+  await group.getByRole('button', { name: 'Open LM7805', exact: true }).click();
+  const detail = page.getByRole('dialog', { name: 'Component details' });
+  await expect(detail).toBeVisible();
+  await expect(page.locator('.transition-curtain')).not.toBeVisible();
   await page.getByRole('button', { name: 'Zoom picture' }).click();
-  await expect(page.getByRole('button', { name: 'Fit picture' })).toHaveAttribute(
-    'aria-pressed',
-    'true',
-  );
-  await expect(page.getByRole('dialog').locator('.detail-photo img')).toHaveCSS(
+  await expect(detail.locator('.detail-photo img')).toHaveCSS(
     'transform',
     'matrix(2, 0, 0, 2, 0, 0)',
   );
   await page.getByRole('button', { name: 'Fit picture' }).click();
+  await page.getByLabel('Pieces to add or use').fill('2');
+  await page.getByRole('button', { name: 'Use parts', exact: true }).click();
+  await expect(detail.locator('.stock-flight')).toBeVisible();
+  await expect(detail.locator('.stock-number .quantity-window')).toHaveText('5');
+  await page.screenshot({ path: '.local/screenshots/catalog-detail.png' });
   await page.keyboard.press('Escape');
-  await page.getByRole('button', { name: 'All components', exact: true }).click();
-  await page.getByRole('button', { name: 'Add one LM7805', exact: true }).click();
-  await expect(page.getByLabel('LM7805 stock')).toContainText('7');
-  await page.getByRole('button', { name: 'Out of stock', exact: true }).click();
-  await expect(page.locator('.part-card')).toHaveCount(1);
-  await expect(page.getByRole('button', { name: 'Use one NE555' })).toBeDisabled();
-  await page.getByRole('button', { name: 'All parts', exact: true }).click();
-  await page.getByRole('button', { name: 'List view' }).click();
-  await expect(page.getByRole('table')).toBeVisible();
+  await expect(detail).not.toBeVisible();
+  await expect(group).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(group).not.toBeVisible();
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeCloseTo(homeY, 0);
+  await expect(groupButton).toBeFocused();
+
+  // Pixel home from nested dialogs releases every scroll lock.
+  await groupButton.click();
+  await group.getByRole('button', { name: 'Open LM7805', exact: true }).click();
+  await expect(page.locator('.transition-curtain')).not.toBeVisible();
+  await detail.getByRole('button', { name: 'TreasureTrove home' }).click();
+  await expect(page.locator('.pixel-curtain')).toBeVisible();
+  await expect(page.locator('.modal[open]')).toHaveCount(0);
+  await expect(page.locator('.transition-curtain')).not.toBeVisible();
+  await expect(page.locator('body')).not.toHaveCSS('overflow', 'hidden');
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeCloseTo(homeY, 0);
+
+  await page.locator('.footer-reveal').scrollIntoViewIfNeeded();
+  await expect(page.locator('.footer-content')).toHaveCSS('opacity', '1');
+  await page.screenshot({ path: '.local/screenshots/catalog-footer.png' });
+  await page.getByRole('button', { name: 'Back to search' }).click();
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeLessThan(2);
+  await page.keyboard.press('n');
+  const form = page.getByRole('dialog', { name: 'New component' });
+  await expect(form.getByLabel('Component group')).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(form).not.toBeVisible();
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect(page.locator('html')).not.toHaveClass(/lenis/);
+  await page.getByRole('button', { name: /^All components/ }).click();
+  const all = page.getByRole('dialog', { name: 'All components', exact: true });
+  await all.getByRole('button', { name: 'Out of stock', exact: true }).click();
+  await expect(all.locator('.part-card')).toHaveCount(1);
+  await expect(all.getByRole('button', { name: 'Use one NE555' })).toBeDisabled();
+  await all.getByRole('button', { name: 'All parts', exact: true }).click();
+  await all.getByRole('button', { name: 'List view' }).click();
+  await expect(all.getByRole('table')).toBeVisible();
+  await page.keyboard.press('Escape');
   await page.reload();
-  await expect(page.getByRole('button', { name: 'List view' })).toHaveAttribute(
+  await page.getByRole('button', { name: /^All components/ }).click();
+  await expect(all.getByRole('button', { name: 'List view' })).toHaveAttribute(
     'aria-pressed',
     'true',
   );
-  await page.screenshot({ path: '.local/screenshots/redesign-list.png', fullPage: true });
-  await page.getByRole('button', { name: 'Grid view' }).click();
-  await page.keyboard.press('n');
-  await expect(page.getByRole('dialog', { name: 'New component' })).toBeVisible();
-  await page.screenshot({ path: '.local/screenshots/redesign-new.png', fullPage: true });
   await page.keyboard.press('Escape');
-  await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.getByRole('button', { name: 'Control & processing', exact: true }).click();
-  await expect(page.locator('.part-card')).toHaveCount(1);
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.getByRole('button', { name: 'All components', exact: true }).click();
-  await expect(page.locator('.part-card')).toHaveCount(8);
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(
-    true,
-  );
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   expect(errors).toEqual([]);
 });

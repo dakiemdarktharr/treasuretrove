@@ -1,15 +1,7 @@
 import { z } from 'zod';
-
-export const GROUPS = [
-  { name: 'Power & regulation', hint: 'Supply, convert, protect', symbol: 'power' },
-  { name: 'Sensing & measurement', hint: 'Sense the physical world', symbol: 'sense' },
-  { name: 'Control & processing', hint: 'Compute and control', symbol: 'chip' },
-  { name: 'Signals & timing', hint: 'Filter, amplify, oscillate', symbol: 'signal' },
-  { name: 'Switching & drive', hint: 'Switch loads and motion', symbol: 'switch' },
-  { name: 'Light & display', hint: 'Indicate and illuminate', symbol: 'light' },
-  { name: 'Connectivity', hint: 'Connect and communicate', symbol: 'connect' },
-  { name: 'Unsorted', hint: 'Ready to organize', symbol: 'box' },
-] as const;
+import { CATEGORIES } from './categories';
+export { FAMILIES } from './categories';
+export const GROUPS = CATEGORIES;
 export type GroupName = (typeof GROUPS)[number]['name'];
 export type Part = {
   id: string;
@@ -50,40 +42,42 @@ export const partSchema = z.object({
   notes: optionalText(2000),
   group: z.enum(GROUPS.map((g) => g.name) as [GroupName, ...GroupName[]]).optional(),
 });
-
-// Deterministic, editable suggestions: purpose takes precedence over part type.
+// Specific devices precede overlapping generic words. Part identity wins over intended use.
+const priority = [
+  'buck-boost',
+  'drivers',
+  'servos',
+  'light-sensors',
+  'current-sensors',
+  'protection',
+  'headers',
+  'mosfets',
+  'references',
+  'optocouplers',
+  'imu',
+  'pressure',
+  'temperature',
+  'development-boards',
+];
+const ordered = [...GROUPS]
+  .sort((a, b) => {
+    const rank = (slug: string) => (priority.includes(slug) ? priority.indexOf(slug) : 100);
+    return rank(a.slug) - rank(b.slug);
+  })
+  .map((g) => ({ name: g.name, pattern: new RegExp(g.pattern, 'i') }));
 export function suggestGroup(usage: string, type = '', partId = ''): GroupName {
-  const rules: [GroupName, RegExp][] = [
-    [
-      'Power & regulation',
-      /power|voltage regulat|buck|boost|battery|charger|rectif|supply|fuse|lm78|lm317|ams1117|ldo/,
-    ],
-    [
-      'Sensing & measurement',
-      /sensor|sens(?:e|ing)|measur|temperature|humidity|pressure|acceleromet|gyroscop|photoresist|ldr|dht|bme280|thermistor/,
-    ],
-    [
-      'Control & processing',
-      /microcontroller|processor|comput|arduino|esp32|esp8266|atmega|stm32|logic|shift register/,
-    ],
-    ['Switching & drive', /switch|relay|motor|mosfet|transistor|solenoid|driver|actuat|2n2222|irf/],
-    ['Light & display', /\bled\b|display|lcd|oled|illuminat|indicator|ws2812/],
-    [
-      'Connectivity',
-      /connect|communicat|wireless|bluetooth|wifi|wi-fi|radio|socket|header|cable|usb|ethernet|antenna|uart|i2c/,
-    ],
-    [
-      'Signals & timing',
-      /signal|filter|amplif|oscillat|timing|timer|resistor|capacitor|inductor|crystal|ne555|op.?amp|lm358/,
-    ],
-  ];
-  for (const text of [usage, `${type} ${partId}`]) {
-    const match = rules.find(([, pattern]) => pattern.test(text.toLowerCase()));
-    if (match) return match[0];
+  for (const text of [type, partId, usage]) {
+    const match = ordered.find((g) => g.pattern.test(text));
+    if (match) return match.name;
   }
-  return 'Unsorted';
+  return 'Uncategorized';
 }
-
+// Read older inventories without rewriting photos, stock, or the original usage notes.
+export function resolveGroup(group: string, usage = '', type = '', partId = ''): GroupName {
+  return GROUPS.some((g) => g.name === group)
+    ? (group as GroupName)
+    : suggestGroup(usage, type, partId);
+}
 export function searchParts(parts: Part[], query: string) {
   const q = query.trim().toLowerCase();
   if (!q) return parts;

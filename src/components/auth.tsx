@@ -2,9 +2,10 @@
 import { useState } from 'react';
 import { ArrowRight, Eye, EyeOff, Check, Copy, KeyRound, LockKeyhole } from 'lucide-react';
 import { Brand } from './brand';
-import { Assembly } from './assembly';
+import { useTransition } from './interactions';
 
 export default function Auth() {
+  const transition = useTransition();
   const [mode, setMode] = useState<'login' | 'register' | 'recover'>('login');
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
@@ -13,8 +14,10 @@ export default function Auth() {
   const [copied, setCopied] = useState(false);
   const [saved, setSaved] = useState(false);
   function switchMode(next: typeof mode) {
-    setMode(next);
-    setError('');
+    void transition('iris', () => {
+      setMode(next);
+      setError('');
+    });
   }
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -35,7 +38,7 @@ export default function Auth() {
       const result = await response.json();
       if (!response.ok) throw new Error(result.error);
       if (result.recoveryKey) setRecoveryKey(result.recoveryKey);
-      else window.location.assign('/');
+      else await transition('iris', () => window.location.assign('/'));
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Could not sign in. Try again.');
     } finally {
@@ -44,26 +47,14 @@ export default function Auth() {
   }
   return (
     <main className="auth-page">
-      <section className="auth-story">
+      <button
+        className="auth-brand"
+        onClick={() => void transition('pixels', () => window.location.assign('/'))}
+        aria-label="TreasureTrove home"
+      >
         <Brand />
-        <div className="story-centre">
-          <h1>
-            Small parts.
-            <br />
-            Endless possibilities.
-          </h1>
-          <p>A home for the bits that make your next big thing.</p>
-          <Assembly />
-        </div>
-        <div className="story-footer">
-          <span>A collection of possibilities.</span>
-          <span>Made for makers.</span>
-        </div>
-      </section>
+      </button>
       <section className="auth-panel">
-        <div className="auth-corner">
-          <LockKeyhole size={14} /> Your own little corner of the workshop
-        </div>
         <div className="auth-card">
           {recoveryKey ? (
             <>
@@ -102,27 +93,23 @@ export default function Auth() {
               <button
                 className="primary full"
                 disabled={!saved}
-                onClick={() => window.location.assign('/')}
+                onClick={() => void transition('iris', () => window.location.assign('/'))}
               >
-                Open my workbench <ArrowRight size={16} />
+                Open inventory <ArrowRight size={16} />
               </button>
             </>
           ) : (
             <>
               <h2>
                 {mode === 'login'
-                  ? 'Hello again.'
+                  ? 'Sign in'
                   : mode === 'register'
-                    ? 'Make yourself at home.'
-                    : 'Recover your workbench.'}
+                    ? 'Create account'
+                    : 'Reset password'}
               </h2>
-              <p className="auth-description">
-                {mode === 'login'
-                  ? 'Sign in to your component collection.'
-                  : mode === 'register'
-                    ? 'One account. All your components.'
-                    : 'Use the recovery key you saved at signup.'}
-              </p>
+              {mode === 'recover' && (
+                <p className="auth-description">Use the recovery key you saved at signup.</p>
+              )}
               <form onSubmit={submit} className="auth-form">
                 <label>
                   Email
@@ -206,7 +193,7 @@ export default function Auth() {
           )}
         </div>
         <div className="auth-bottom">
-          <LockKeyhole size={13} /> Your parts. Your space.
+          <LockKeyhole size={13} /> Private inventory
         </div>
       </section>
     </main>

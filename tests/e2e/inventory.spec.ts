@@ -84,7 +84,7 @@ test('accounts, remember me, validation, duplicates and private inventory isolat
   expect(created.status()).toBe(201);
   const part = (await created.json()).part;
   partId = part.id;
-  expect(part.group).toBe('Power & regulation');
+  expect(part.group).toBe('Linear regulators');
   expect(part).not.toHaveProperty('photo');
   expect(part).not.toHaveProperty('ownerId');
   expect(
@@ -138,15 +138,12 @@ test('desktop search, required picture, upload, quantity controls, keyboard dial
   await mkdir('.local/screenshots', { recursive: true });
   await page.waitForLoadState('networkidle');
   await page.screenshot({ path: '.local/screenshots/login.png', fullPage: true, caret: 'initial' });
-  await page.getByRole('button', { name: 'Take it apart' }).click();
-  await expect(page.locator('.chip-lid')).toHaveCSS('transform', 'matrix(1, 0, 0, 1, 0, -150)');
-  await page.screenshot({ path: '.local/screenshots/redesign-exploded.png', fullPage: true });
-  await page.getByRole('button', { name: 'Put it together' }).click();
-  await expect(page.locator('.chip-lid')).toHaveCSS('transform', 'matrix(1, 0, 0, 1, 0, 0)');
+  await expect(page.locator('.assembly')).toHaveCount(0);
   await page.getByRole('textbox', { name: 'Email', exact: true }).fill(email);
   await page.getByLabel('Password', { exact: true }).fill(password);
   await page.getByRole('button', { name: 'Sign in', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'The collection.' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Components', exact: true })).toBeVisible();
+  await page.getByRole('textbox', { name: 'Search components' }).fill('LM7805');
   await expect(page.getByRole('button', { name: 'Open LM7805' })).toBeVisible();
   await page.getByRole('textbox', { name: 'Search components' }).fill('ESP32-WROOM-32');
   await expect(
@@ -175,12 +172,17 @@ test('desktop search, required picture, upload, quantity controls, keyboard dial
     page.getByRole('dialog').getByRole('heading', { name: 'ESP32-WROOM-32', exact: true }),
   ).toBeVisible();
   await expect(page).toHaveURL(/\/parts\//);
+  await expect(page.locator('.transition-curtain')).not.toBeVisible();
   await page.getByLabel('Pieces to add or use').fill('2');
+  await expect(page.getByLabel('Pieces to add or use')).toHaveValue('2');
   await page.getByRole('button', { name: 'Use parts', exact: true }).click();
   await expect(page.locator('.stock-number')).toHaveText('10pieces');
   await page.screenshot({ path: '.local/screenshots/detail.png', fullPage: true });
   await page.getByRole('button', { name: 'Close dialog' }).click();
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await expect(page).toHaveURL(base + '/');
   await page.reload();
+  await page.getByRole('textbox', { name: 'Search components' }).fill('ESP32-WROOM-32');
   await expect(page.getByRole('button', { name: 'Open ESP32-WROOM-32' })).toBeVisible();
   await page.screenshot({ path: '.local/screenshots/inventory.png', fullPage: true });
   await page.getByRole('button', { name: 'Grid view' }).click();

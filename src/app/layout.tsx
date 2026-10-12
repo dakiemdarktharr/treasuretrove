@@ -7,15 +7,20 @@ import '@fontsource/bricolage-grotesque/latin-800.css';
 import '@fontsource/dm-mono/latin-400.css';
 import '@fontsource/dm-mono/latin-500.css';
 import './globals.css';
+import 'lenis/dist/lenis.css';
+import './catalog.css';
+import { Interactions } from '@/components/interactions';
 export const metadata: Metadata = {
-  title: 'TreasureTrove — Your component workbench',
+  title: 'TreasureTrove — Component inventory',
   description:
-    'A place for every component. Find electronic parts, organize their purpose, and keep your stock in sync.',
+    'Search electronic parts by ID or component group, manage quantities, and sync your personal inventory.',
 };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Interactions>{children}</Interactions>
+      </body>
     </html>
   );
 }

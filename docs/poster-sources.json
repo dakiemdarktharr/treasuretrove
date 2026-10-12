@@ -1,0 +1,1350 @@
+{
+  "created": "2026-10-12",
+  "method": "Three researched reference images per component group, then image_gen reference-guided illustration. Four illustrated groups per atlas. Original source images are not served by the application. WebP conversion is loss-limited asset optimization, not an art edit.",
+  "groups": [
+    {
+      "name": "Resistors",
+      "family": "Passive components",
+      "atlas": "/groups/atlas-0.webp",
+      "tile": 0,
+      "query": "resistor axial metal film SMD wirewound components",
+      "references": [
+        {
+          "source": "Resistors Explained for Ham Radio | Electronics Course - Ham Radio Base -Powered By Ham CQ DX (https://www.hamradiobase.com/electronics/resistors/)",
+          "image": "https://www.hamradiobase.com/images/electronics/resistor-types-comparison.jpg",
+          "subject": " Common Resistor Types Comparison"
+        },
+        {
+          "source": "What Is Electrical Resistance? A Clear Guide - Ham Radio Base -Powered By Ham CQ DX (https://www.hamradiobase.com/electronics/what-is-resistance/)",
+          "image": "https://www.hamradiobase.com/images/electronics/resistor-types-photo.jpg",
+          "subject": " Common Resistor Types Comparison"
+        },
+        {
+          "source": "Resistor Guide: Types, Color Code Reading & Applications (https://www.hitop-tech.com/blogDetail/resistor-guide-types-color-code-reading-applications/78.html)",
+          "image": "https://www.hitop-tech.com/uploads/Resistor%20Types%20Comparison.jpg",
+          "subject": " Resistor Types Comparison Chart"
+        }
+      ]
+    },
+    {
+      "name": "Potentiometers",
+      "family": "Passive components",
+      "atlas": "/groups/atlas-0.webp",
+      "tile": 1,
+      "query": "rotary trimmer slide potentiometer electronic component",
+      "references": [
+        {
+          "source": "PTV09A-3020S-B103 / RLC/수동소자 > (R) 저항 > 가변저항(포텐셔미터) > 로타리 포텐셔미터 / 디바이스마트 (https://www.devicemart.co.kr/goods/view?no=8055005)",
+          "image": "https://mm.digikey.com/Volume0/opasdata/d220001/medias/images/4841/PTV09A-3020S-B103.jpg",
+          "subject": " Rotary Potentiometer PTV09A-3020S-B103"
+        },
+        {
+          "source": "RESISTENCIA VARIABLE 1K OHM (102) HORIZONTAL (https://componenteselectronicoscr.com/product/resistencia-variable-1k-ohm-102-horizontal)",
+          "image": "https://componenteselectronicoscr.com/assets/uploads/a3d3548b7d974411ff39d628983e064d.jpg",
+          "subject": " Horizontal 1KΩ Trimmer Potentiometer"
+        },
+        {
+          "source": "Digikey Rotary Potentiometer at Alfredo Grove blog (https://storage.googleapis.com/dbfnnwtsdbodie/digikey-rotary-potentiometer.html)",
+          "image": "https://media.digikey.com/Photos/TT%20Electronics%20BI/P120K-Y20BR50K.JPG",
+          "subject": " Rotary Potentiometer Component"
+        }
+      ]
+    },
+    {
+      "name": "Capacitors",
+      "family": "Passive components",
+      "atlas": "/groups/atlas-0.webp",
+      "tile": 2,
+      "query": "ceramic electrolytic film capacitors electronic components",
+      "references": [
+        {
+          "source": "コンデンサの種類と特徴｜EMC村の民 (https://engineer-climb.com/capacitor-type/)",
+          "image": "https://engineer-climb.com/wp-content/uploads/2020/12/%E3%82%B3%E3%83%B3%E3%83%87%E3%83%B3%E3%82%B5%E6%AF%94%E8%BC%83.png",
+          "subject": " Capacitor Type Comparison Table"
+        },
+        {
+          "source": "Probots Capacitors - Components Buy Online India (https://probots.co.in/electronic-components/capacitors.html)",
+          "image": "https://probots.co.in/pub/media/catalog/category/ProbotsCapacitors.jpg",
+          "subject": " Capacitor Variety Showcase"
+        },
+        {
+          "source": "Capacitors - RoboElements.in (https://www.roboelements.in/categories/capacitors-224437)",
+          "image": "https://image.cdn.shpy.in/224437/cat/1658432028855_230033_cat.jpg?format=webp",
+          "subject": " Assorted Electronic Capacitors"
+        }
+      ]
+    },
+    {
+      "name": "Inductors",
+      "family": "Passive components",
+      "atlas": "/groups/atlas-0.webp",
+      "tile": 3,
+      "query": "toroid axial SMD inductors electronic components",
+      "references": [
+        {
+          "source": "10 x Common Mode Toroid Toroidal Inductor 1.2MH 40mOhm 2Amp Coil - Walmart.com (https://www.walmart.com/ip/174319487)",
+          "image": "https://i5.walmartimages.com/asr/a9c0c3df-8a7d-444c-b170-ca6d6ef29ff7.e959117677bc08b481011ad46ea40611.jpeg?odnBg=FFFFFF&odnHeight=768&odnWidth=768",
+          "subject": " Common Mode Toroidal Inductors"
+        },
+        {
+          "source": "200mh Inductor - SMD Power High Current Toroidal Coils (https://www.alibaba.com/showroom/200mh-inductor.html)",
+          "image": "https://s.alicdn.com/%40sc04/kf/H90f13dde163144a1a316981f8a9870b92/Smart-Electronics-1.5uh-Smd-Coil-Inductor-200mh-100mh-2.2uh-Fixed-Inductors-47uh-Electronic-Components.jpg",
+          "subject": " SMD Toroidal Inductors"
+        },
+        {
+          "source": "Bourns PM2120-221K-RC PM2120 Series Wire-wound SMD Inductor with a Iron Core, 220 uH +/-10% 5A Idc (https://us.rs-online.com/product/bourns/pm2120-221k-rc/70410656/)",
+          "image": "https://assets.rs-online.com/image/upload/v1525038998/70410647.jpg",
+          "subject": " Toroidal SMD Inductor"
+        }
+      ]
+    },
+    {
+      "name": "Crystals & oscillators",
+      "family": "Passive components",
+      "atlas": "/groups/atlas-1.webp",
+      "tile": 0,
+      "query": "quartz crystal oscillator resonator electronic component",
+      "references": [
+        {
+          "source": "Hc 49s DIP Quartz Xtal 4.9152 MHz 30PF Quartz Crystal Oscillator Crystal Resonator - Crystal Resonator and 4.9152 MHz Crystal Resonator (https://m.made-in-china.com/product/Hc-49s-DIP-Quartz-Xtal-4-9152-MHz-30PF-Quartz-Crystal-Oscillator-Crystal-Resonator-1982182235.html)",
+          "image": "https://image.made-in-china.com/2f0j00kJLlqCwKPocb/Hc-49s-DIP-Quartz-Xtal-4-9152-MHz-30PF-Quartz-Crystal-Oscillator-Crystal-Resonator.jpg",
+          "subject": " HC-49S DIP Quartz Crystal Resonators"
+        },
+        {
+          "source": "27 MHz Crystal Oscillator Resonator - HC-49-S THT Quartz - Low  27 MHz | Electronics \\ Passive Elements \\ Crystal Oscillators & Resonators (https://gleanntronics.ie/en/products/27-mhz-crystal-oscillator-resonator-hc-49-s-tht-quartz-low-3681.html)",
+          "image": "https://gleanntronics.ie/hpeciai/437627a572060012fd5ea7453289dd66/eng_pl_27-MHz-Crystal-Oscillator-Resonator-HC-49-S-THT-Quartz-Low-3681_1.jpg",
+          "subject": " 27 MHz HC-49S Quartz Crystal Oscillator Resonator"
+        },
+        {
+          "source": "AEL X2M457600L009 2.45760MHz HC49/U Quartz Crystal Resonator | Rapid Electronics (https://www.rapidonline.com/ael-x2m457600l009-2-45760mhz-hc49-u-quartz-crystal-resonator-90-3737)",
+          "image": "https://static.rapidonline.com/catalogueimages/product/90/37/s90-3737p01wj.jpg",
+          "subject": " HC49/U Quartz Crystal Resonator"
+        }
+      ]
+    },
+    {
+      "name": "Transformers",
+      "family": "Passive components",
+      "atlas": "/groups/atlas-1.webp",
+      "tile": 1,
+      "query": "PCB power signal toroidal transformer electronic",
+      "references": [
+        {
+          "source": "INGERSOLL RAND XPM-TAC24 Ac Supply Unit Pcb Circuit Board D513494 | eBay (https://www.ebay.com/itm/334923891534)",
+          "image": "https://i.ebayimg.com/images/g/awYAAOSwkvhklpVy/s-l1600.jpg",
+          "subject": " Ingersoll Rand XPM-TAC24 AC Supply PCB"
+        },
+        {
+          "source": "Бескорпусные источники питания (https://www.pikprogress.ru/hardware_power_bezkorp.html)",
+          "image": "https://www.pikprogress.ru/images/hardware/bpu.jpg",
+          "subject": " Bare Power Supply PCB"
+        },
+        {
+          "source": "Please wake me up from this PCB nightmare [Krell KSP-7B Power Supply] | Page 4 | diyAudio (https://www.diyaudio.com/community/threads/please-wake-me-up-from-this-pcb-nightmare-krell-ksp-7b-power-supply.425165/page-4)",
+          "image": "https://www.diyaudio.com/community/attachments/deconstructed-jpg.1438709/",
+          "subject": "Krell KSP-7B Power Supply Teardown"
+        }
+      ]
+    },
+    {
+      "name": "Transistors",
+      "family": "Discrete semiconductors",
+      "atlas": "/groups/atlas-1.webp",
+      "tile": 2,
+      "query": "bipolar transistor TO92 TO220 SOT23 components",
+      "references": [
+        {
+          "source": "Was ist ein Transistor? Funktion, Aufbau | einfach erklärt (https://www.dischereit.de/glossar/transistor/)",
+          "image": "https://www.dischereit.de/wp-content/uploads/2025/11/transistor-bauformen-1024x683.jpg",
+          "subject": " Transistor Package Types"
+        },
+        {
+          "source": "KT838 (https://mpel.eu/KT838)",
+          "image": "https://mpel.eu/image/cache/data/products/TRANZISTOR-500x500.JPG",
+          "subject": " Transistor Package Reference Chart"
+        },
+        {
+          "source": "知乎盐选 | 3.2　功率开关管 (https://www.zhihu.com/market/pub/120043244/manuscript/1289596262585303040)",
+          "image": "https://pic1.zhimg.com/v2-5b8e0c005d4992e14d97a4af271b206c.jpg",
+          "subject": " Common Transistor Package Types"
+        }
+      ]
+    },
+    {
+      "name": "MOSFETs & JFETs",
+      "family": "Discrete semiconductors",
+      "atlas": "/groups/atlas-1.webp",
+      "tile": 3,
+      "query": "MOSFET transistor TO220 DPAK SOT23",
+      "references": [
+        {
+          "source": "8 pin mosfet pinout: Complete Guide & Diagram (https://www.accio.com/plp/8-pin-mosfet-pinout)",
+          "image": "https://s.alicdn.com/%40sc04/kf/Hfbac6ae280d643f1a69c43101deb5e4bk.png_640x640.png",
+          "subject": " Din-Tek Semiconductor Package Reference"
+        },
+        {
+          "source": "关于MOS管，你需要知道的那些事 - 深圳飞捷士科技有限公司 (https://www.iicsic.com/h-nd-321.html)",
+          "image": "https://25814708.s21i.faiusr.com/4/ABUIABAEGAAgq9aRsgYouuDpwAYwuAg4vws.png",
+          "subject": " MOSFET Package Outline Chart"
+        },
+        {
+          "source": "– PCB HERO (https://www.pcb-hero.com/blogs/lickys-column/p55nf06-mosfet-pinout-specification-operating-pros-and-cons)",
+          "image": "https://reversepcb.com/wp-content/uploads/2023/03/STP55NF06-packages-D%C2%B2PAK-TO-220-and-TO-220FP.png.webp",
+          "subject": " STP55NF06 MOSFET Package Pinouts"
+        }
+      ]
+    },
+    {
+      "name": "Diodes & rectifiers",
+      "family": "Discrete semiconductors",
+      "atlas": "/groups/atlas-2.webp",
+      "tile": 0,
+      "query": "signal rectifier schottky diode electronic component",
+      "references": [
+        {
+          "source": "Taiwan Semiconductor 100 V 5 A Diode Schottky 2-Pin DO-201AD SR510 | RS (https://twen.rs-online.com/web/p/schottky-diodes-rectifiers/6882233)",
+          "image": "https://media.rs-online.com/F6882233-01.jpg",
+          "subject": " Taiwan Semiconductor SR510 Schottky Diode"
+        },
+        {
+          "source": "STPS5L60<!-- --> - LionCircuits (https://www.lioncircuits.com/parts/STPS5L60)",
+          "image": "https://www.lioncircuits.com/_next/image?q=75&url=https%3A%2F%2Fprod-parts-data.s3.amazonaws.com%2FSTPS5L60%2Fimages%2F2_STMicroelectronics-STPS5L60.jpg&w=640",
+          "subject": " STPS5L60 Schottky Rectifier Diode"
+        },
+        {
+          "source": "Taiwan Semiconductor SK36A E3 3A 60V SMD Schottky Rectifier Diode | Rapid Electronics (https://www.rapidonline.com/taiwan-semiconductor-sk36a-e3-3a-60v-smd-schottky-rectifier-diode-47-0972)",
+          "image": "https://static.rapidonline.com/catalogueimages/product/47/09/s47-0972p01wl.jpg",
+          "subject": " Taiwan Semiconductor SK36A E3 SMD Schottky Diode"
+        }
+      ]
+    },
+    {
+      "name": "Thyristors & triacs",
+      "family": "Discrete semiconductors",
+      "atlas": "/groups/atlas-2.webp",
+      "tile": 1,
+      "query": "SCR thyristor triac electronic components",
+      "references": [
+        {
+          "source": "Curso de Eletrônica Analógica – Parte 6 - SCRs E TRIACs (CUR2006) (https://www.newtoncbraga.com.br/analogica/14347-curso-de-eletronica-analogica-parte-6-scrs-e-triacs-cur2006.html)",
+          "image": "https://www.newtoncbraga.com.br/images/stories/artigos2017/cur2006_0007.png",
+          "subject": " Common SCR and TRIAC Packages"
+        },
+        {
+          "source": "SCR, DIAC, and TRIAC Power Control Devices Explained | Dahiru Ohida posted on the topic | LinkedIn (https://www.linkedin.com/posts/dahiru-ohida-855119190_scr-diac-and-triac-are-three-important-activity-7425294546600824832-Ox8p)",
+          "image": "https://media.licdn.com/dms/image/v2/D5622AQGEkKgXhzSjnw/feedshare-shrink_800/B56Zypf_esKEAg-/0/1772370262220?e=2147483647&t=v8QRKnCcpX1ddFqxoERzcFdcXXtkloyL_t8Te8MmT0U&v=beta",
+          "subject": " Types of Thyristors Infographic"
+        },
+        {
+          "source": "SCR | PPTX (https://www.slideshare.net/slideshow/scr-43909287/43909287)",
+          "image": "https://image.slidesharecdn.com/omscrmain-150126111647-conversion-gate02/75/SCR-5-2048.jpg",
+          "subject": " Types of SCR Devices"
+        }
+      ]
+    },
+    {
+      "name": "Optocouplers",
+      "family": "Discrete semiconductors",
+      "atlas": "/groups/atlas-2.webp",
+      "tile": 2,
+      "query": "PC817 optocoupler DIP SMD components",
+      "references": [
+        {
+          "source": "PC817: от обзора к монтажу (https://rightelectronics.ru/blog/pc817-ot-obzora-k-montazhu)",
+          "image": "https://rightelectronics.ru/storage/app/media/uploaded-files/3480cb30-4420-4a24-acc6-4275ed3020cc.png",
+          "subject": " PC817 Optocoupler Package Options"
+        },
+        {
+          "source": "PC817 PC817C PC 817 Optocoupler Optoisolator Photo Isolator DIP4 SMD | Shopee Malaysia (https://shopee.com.my/PC817-PC817C-PC-817-Optocoupler-Optoisolator-Photo-Isolator-DIP4-SMD-i.135112285.9090543312)",
+          "image": "https://down-my.img.susercontent.com/file/666da8cf49c13d59024c7b2e77bc454c",
+          "subject": " PC817 Optocoupler Listing"
+        },
+        {
+          "source": "5Pcs PC817 PC817C PS817 817C DIP4 SOP4 Optocoupler | Shopee Thailand (https://shopee.co.th/5Pcs-PC817-PC817C-PS817-817C-DIP4-SOP4-Optocoupler-i.82516711.18067190153)",
+          "image": "https://down-th.img.susercontent.com/file/sg-11134201-22120-b9qfrins2rkv41",
+          "subject": " PC817C Optocoupler Packages"
+        }
+      ]
+    },
+    {
+      "name": "Voltage references",
+      "family": "Discrete semiconductors",
+      "atlas": "/groups/atlas-2.webp",
+      "tile": 3,
+      "query": "TL431 LM4040 voltage reference IC",
+      "references": [
+        {
+          "source": "TL431 Programmable Voltage Reference | PDF | Physical Quantities | Electrical Components (https://www.scribd.com/document/459443071/TL431)",
+          "image": "https://imgv2-1-f.scribdassets.com/img/document/459443071/original/913fc6f956/1?v=1",
+          "subject": " TL431 Programmable Voltage Reference Datasheet"
+        },
+        {
+          "source": "TL431CLP Voltage references adjustable shunt - electronic-studio your (https://electronic-studio.com/TL431CLP-Voltage-references-adjustable-shunt)",
+          "image": "https://electronic-studio.com/media/image/product/12716/md/tl431clp-spannungsreferenzen-einstellbarer-shunt.jpg",
+          "subject": " TL431CLP Adjustable Shunt Voltage Reference"
+        },
+        {
+          "source": "TL431 Precision Voltage Reference IC | PDF | Electronic Circuits | Diode (https://www.scribd.com/document/338546885/TL431)",
+          "image": "https://imgv2-2-f.scribdassets.com/img/document/338546885/original/82c01c056d/1591243759?v=1",
+          "subject": " TL431 Programmable Precision Reference IC Datasheet"
+        }
+      ]
+    },
+    {
+      "name": "Voltage step-down",
+      "family": "Power & protection",
+      "atlas": "/groups/atlas-3.webp",
+      "tile": 0,
+      "query": "LM2596 MP1584 buck step down converter module",
+      "references": [
+        {
+          "source": "Shopee Indonesia | Situs Belanja Online Terlengkap & Terpercaya (https://shopee.co.id/DC-DC-Converter-Buck-Step-Down-MP1584EN-3A-4.5-28V-to-0.8-20V-i.292255344.4967813798)",
+          "image": "https://down-id.img.susercontent.com/file/5cc5a91b7979c6f3aac437010844d34b",
+          "subject": " MP1584 Adjustable DC-DC Step-Down Converter Module"
+        },
+        {
+          "source": "Jual Step DOWN Mini 3A 0,8-20V DC-DC Adjustable MP 1584/LM 2596 | Shopee Indonesia (https://shopee.co.id/Step-DOWN-Mini-3A-0-8-20V-DC-DC-Adjustable-MP-1584-LM-2596-i.549946942.15119245686)",
+          "image": "https://down-id.img.susercontent.com/file/92db142eb3d61ea535fd5209f77ff02e",
+          "subject": " MP1584/LM2596 Mini 3A DC-DC Step-Down Module"
+        },
+        {
+          "source": "LM2596 Buck Converter & MT3608 Boost Converter | Daraz.lk (https://www.daraz.lk/products/lm2596-buck-converter-mt3608-boost-converter-i124084411.html)",
+          "image": "https://static-01.daraz.lk/p/6418e22559c027e3ef66a3995afda3da.jpg",
+          "subject": " DC–DC Converter Modules"
+        }
+      ]
+    },
+    {
+      "name": "Voltage step-up",
+      "family": "Power & protection",
+      "atlas": "/groups/atlas-3.webp",
+      "tile": 1,
+      "query": "MT3608 XL6009 step up boost converter module",
+      "references": [
+        {
+          "source": "MT3608 DC-DC Step-Up Converter Booster Power Supply Module Boost Board ... A6K6 - Walmart.com (https://www.walmart.com/ip/MT3608-DC-DC-Step-Up-Converter-Booster-Power-Supply-Module-Boost-Board-A6K6/1050576047)",
+          "image": "https://i5.walmartimages.com/asr/f1c2df72-0e51-46b5-9f0f-566476838e0f.f5c27b65dec0fad9422ee2ed4f8c01b9.jpeg",
+          "subject": " MT3608 DC-DC Boost Converter Module"
+        },
+        {
+          "source": "MT3608 2A DC-DC Voltage Step Up Boost Converter Module 2-24V Input READY ELECTRONICSonline shop bangladeshothoba.com | Othoba.com (https://ap.othoba.com/mt3608-2a-dc-dc-voltage-step-up-boost-converter-module-2-24v-input-ready-electronics-445512)",
+          "image": "https://cdn.othoba.com/images/thumbs/1000903_mt3608-2a-dc-dc-voltage-step-up-boost-converter-module-2-24v-input_400.jpeg",
+          "subject": " MT3608 2A DC-DC Boost Converter Module"
+        },
+        {
+          "source": "MT3608 2A Yükselteç DC-DC Voltaj Regülatörü Step Up Boost Converter Modülü | SENSÖR MODÜL (https://www.sensormodul.com/product-page/mt3608-2a-dc-dc-step-up-g%C3%BC%C3%A7-mod%C3%BCl%C3%BC-type-c-giri%C5%9Fli-boost-converter-2v-24v-y%C3%BCkselt)",
+          "image": "https://static.wixstatic.com/media/7e1b87_d7bd92b0db7c4dea95adac1e08428201~mv2.jpeg/v1/fill/w_980%2Ch_980%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/7e1b87_d7bd92b0db7c4dea95adac1e08428201~mv2.jpeg",
+          "subject": " MT3608 2A DC-DC Step-Up Boost Converter Module"
+        }
+      ]
+    },
+    {
+      "name": "Buck-boost converters",
+      "family": "Power & protection",
+      "atlas": "/groups/atlas-3.webp",
+      "tile": 2,
+      "query": "TPS63020 LTC3780 buck boost converter module",
+      "references": [
+        {
+          "source": "DC 5V-32V to 1V-30V 10A LTC3780 Automatic Step Up Down Module – diymore (https://www.diymore.cc/products/dc-5v-32v-to-1v-30v-10a-ltc3780-automatic-step-up-down-regulator-charging-module)",
+          "image": "https://www.diymore.cc/cdn/shop/products/011083_2_803_1024x1024.jpg?v=1588657141",
+          "subject": " LTC3780 Buck-Boost Charging Module"
+        },
+        {
+          "source": "XL63020 TPS63020 Lithium Battery USB Automatic Boost Buck Step Up Down Module Microcontroller Power Low Ripple 4.2V - Walmart.com (https://www.walmart.com/ip/15132708594)",
+          "image": "https://i5.walmartimages.com/seo/XL63020-TPS63020-Lithium-Battery-USB-Automatic-Boost-Buck-Step-Up-Down-Module-Microcontroller-Power-Low-Ripple-4-2V_a3500635-9d0c-4dc3-b5e1-23300640919e.e5288388731b12e5803fa81732b2a9db.jpeg",
+          "subject": " TPS63020 Buck-Boost Converter Module"
+        },
+        {
+          "source": "LTC3780 130W DC Synchronous Buck Boost Step Up Down Voltage & Current Regulator | eBay (https://www.ebay.com/itm/406252249940)",
+          "image": "https://img.alicdn.com/imgextra/i2/2134137363/TB2_FccaqnyQeBjSspeXXa8WpXa_%21%212134137363.jpg",
+          "subject": " LTC3780 Synchronous Buck-Boost Converter Module"
+        }
+      ]
+    },
+    {
+      "name": "Linear regulators",
+      "family": "Power & protection",
+      "atlas": "/groups/atlas-3.webp",
+      "tile": 3,
+      "query": "LM7805 AMS1117 LM317 linear voltage regulator",
+      "references": [
+        {
+          "source": "LM7805 LM7805CT 三端稳压器三极管L7805CV/CD2T LM317T L7812CV_虎窝淘 (https://tao.hooos.com/goods_VrX647vi6t2o6vKU2kmcvtV-zzQnnasogR57a6bszp.html)",
+          "image": "https://img.alicdn.com/i3/2207691322/O1CN01Z9EtEs1LdWQJuJRFa_%21%212207691322.jpg",
+          "subject": " Voltage Regulator IC Assortment"
+        },
+        {
+          "source": "Comprar bojack 10 valores 50 pcs lm317 l7805 l7806 l7808 l7809 l7810 l7812 l7815 l7818 l7824 to 220 paquete de regulador de voltaje positivo de alta corriente kit surtido colombia en Colombia | Yaxa (https://colombia.yaxa.co/products/bojack-10-valores-50-pcs-lm317-l7805-l7806-l7808-l7809-l7810-l7812-l7815-l7818-l7824-to-220-paquete-de-regulador-de-voltaje-positivo-de-alta-corriente-kit-surtido-colombia/)",
+          "image": "https://m.media-amazon.com/images/I/71I4x6wel7L._SL1500_.jpg",
+          "subject": " TO-220 Positive Voltage Regulator Kit"
+        },
+        {
+          "source": "含税13%三端稳压管 L7805CV/L7812/L7815 L7806CV 09 08 24 L7905_虎窝淘 (https://tao.hooos.com/goods_QpQM0KeUQtBaAw3Bj2CXybTatQ-0Rakk7FB2zdDJWmHd.html)",
+          "image": "https://img.alicdn.com/bao/uploaded/i4/1823013487/O1CN01hlGdAT1bd5z8BQ6m4_%21%210-item_pic.jpg",
+          "subject": " TERUIGAO Digital Accessories Voltage Regulator Promotion"
+        }
+      ]
+    },
+    {
+      "name": "Battery chargers",
+      "family": "Power & protection",
+      "atlas": "/groups/atlas-4.webp",
+      "tile": 0,
+      "query": "TP4056 MCP73831 lithium battery charger board",
+      "references": [
+        {
+          "source": "– Indian Hobby Center (https://www.indianhobbycenter.com/products/micro-usb-tp4056-with-current-protection-1a-li-ion-lithium-battery-charging-module-type-b-copy)",
+          "image": "https://www.indianhobbycenter.com/cdn/shop/files/TP4056-Module-1.2-A-Li-Ion-Battery-Charging-Board-Micro-USB-with-Current-Protection0.jpg?v=1718803027&width=713",
+          "subject": " TP4056 Lithium Battery Charging Module"
+        },
+        {
+          "source": "Treedix 2pcsUSB LiPo Battery Charger Board with Battery Protection JST – Treedix Official (https://treedix.com/products/treedix-2pcs-type-c-usb-lipo-battery-charger-board-with-battery-protection-jst-socket-with-led-indicator-charging-rate-adjustable-automatic-power-down-thermal-regulation)",
+          "image": "https://treedix.com/cdn/shop/products/41esgJkZ5pL.jpg?v=1648431366",
+          "subject": " Treedix USB LiPo Charger Boards"
+        },
+        {
+          "source": "Soldered 333014 Li-ion charger with protection, 7,90 € (https://www.welectron.com/Soldered-333014-Li-ion-charger-with-protection)",
+          "image": "https://www.welectron.com/media/image/product/24576/lg/soldered-333014-das-ladegeraet-fuer-lithium-akku-mit-dem-schutz.jpg",
+          "subject": " TP4056 Li-ion Charger Board"
+        }
+      ]
+    },
+    {
+      "name": "Batteries & holders",
+      "family": "Power & protection",
+      "atlas": "/groups/atlas-4.webp",
+      "tile": 1,
+      "query": "AA CR2032 lipo battery holder components",
+      "references": [
+        {
+          "source": "Coin Cell And Led at Joan Currie blog (https://storage.googleapis.com/drqflvxnmfjtte/coin-cell-and-led.html)",
+          "image": "https://cdn-shop.adafruit.com/1200x900/895-05.jpg",
+          "subject": " Coin Cell Holder with CR2032 Batteries"
+        },
+        {
+          "source": "Superior stability and contact performance of a 2032 battery dummy adapter for a No7 battery by 玩转智能 MakerWorld: Download Free 3D Models (https://makerworld.com/en/models/1207742-superior-stability-and-contact-performance-of-a-20)",
+          "image": "https://makerworld.bblmw.com/makerworld/model/DSM00000001207742/design/a83fb52c-b62f-45b8-a0a0-404338443ca0.webp?x-oss-process=image%2Fresize%2Cw_1000%2Fformat%2Cwebp",
+          "subject": " 3D‑Printed CR2032 Dummy Adapter in Yellow Enclosure"
+        },
+        {
+          "source": "CR2032 Battery holder Cell Button Battery Holder with Cover On / Off Switch DIY Through Hole PCB Mount | Shopee Malaysia (https://shopee.com.my/CR2032-Battery-holder-Cell-Button-Battery-Holder-with-Cover-On-Off-Switch-DIY-Through-Hole-PCB-Mount-i.6674515.25071840862)",
+          "image": "https://down-my.img.susercontent.com/file/my-11134207-7r98u-ltjkzikwts0kce",
+          "subject": " CR2032 Battery Holders Collection"
+        }
+      ]
+    },
+    {
+      "name": "Fuses & breakers",
+      "family": "Power & protection",
+      "atlas": "/groups/atlas-4.webp",
+      "tile": 2,
+      "query": "glass fuse PTC resettable blade fuse components",
+      "references": [
+        {
+          "source": "Fuse Basics & Ratings-Not a Fuse | EWskills (https://www.ewskills.com/quiz/fuse-basics---ratings/561/not-a-fuse)",
+          "image": "https://cdn.ewskills.com/question/not-a-fuse/text/eEIOaoHQZ5WD-Q11-not-a-fuse.webp",
+          "subject": " Fuse Identification Quiz"
+        },
+        {
+          "source": "Fuse Symbol Guide: Types, IEC vs ANSI, and Circuit Diagrams (https://jlcpcb.com/blog/fuse-symbol-guide)",
+          "image": "https://rs.jlcpcb.com/static/image/blog/pcb-assembly/fuse-symbol-vs-real-component.webp",
+          "subject": " Fuse Types and Their Symbols"
+        },
+        {
+          "source": "30V Resettable PTC PPTC Fuse - Resettable Fuse and PTC Fuse (https://fuse-china.en.made-in-china.com/product/yZWnqUNGXpca/China-30V-Resettable-PTC-PPTC-Fuse.html)",
+          "image": "https://image.made-in-china.com/365f3j00rAFtBgSlhEkR/30V-Resettable-PTC-PPTC-Fuse.webp",
+          "subject": "PTC Resettable Fuse Varieties"
+        }
+      ]
+    },
+    {
+      "name": "Surge protection",
+      "family": "Power & protection",
+      "atlas": "/groups/atlas-4.webp",
+      "tile": 3,
+      "query": "MOV TVS gas discharge tube circuit protection components",
+      "references": [
+        {
+          "source": "Bot Verification (https://viox.com/mov-vs-gdt-vs-tvs-comparison/)",
+          "image": "https://viox.com/wp-content/uploads/elementor/thumbs/mov-vs-gdt-vs-tvs-rflcuttih031wa0o70zl6lhaay5jpczlahcc90vpnk.webp",
+          "subject": " Surge Protection Components Comparison"
+        },
+        {
+          "source": "Bot Verification (https://viox.com/mov-vs-gdt-vs-tvs-comparison/)",
+          "image": "https://img.viox.com/Physical-comparison-of-three-surge-protection-technologies.webp",
+          "subject": " Surge Protection Components Comparison"
+        },
+        {
+          "source": "What is transient protection? - EMC Directory (https://www.emc-directory.com/community/what-is-transient-protection-what-are-voltage-limiting-devices-what-are-current-limiting-devices)",
+          "image": "https://cdn.emc-directory.com/community/1749100640239_638846974446664323.jpeg",
+          "subject": " Single-Stage Transient Protection Network"
+        }
+      ]
+    },
+    {
+      "name": "IMUs",
+      "family": "Sensors",
+      "atlas": "/groups/atlas-5.webp",
+      "tile": 0,
+      "query": "MPU6050 BNO055 ICM20948 IMU sensor breakout",
+      "references": [
+        {
+          "source": "Adafruit 2472 BNO055 9-DOF Mutlak IMU Fusion Kartı Satın al Kompent.Com (https://www.kompent.com/adafruit-2472-bno055-9-dof-imu-fusion-karti-klasik-versiyon)",
+          "image": "https://static.ticimax.cloud/13353/uploads/urunresimleri/buyuk/kompentadafruit-2472-bno055-9-dof-imu---aa5b-.jpg",
+          "subject": " Adafruit BNO055 9-DOF IMU Fusion Breakout Board"
+        },
+        {
+          "source": "Adafruit 9-DOF Absolute Orientation IMU Fusion Breakout - BNO055 - The Pi Hut (https://thepihut.com/products/adafruit-9-dof-absolute-orientation-imu-fusion-breakout-bno055)",
+          "image": "https://thepihut.com/cdn/shop/products/adafruit-9-dof-absolute-orientation-imu-fusion-breakout-bno055-adafruit-ada2472-28610646245571_1000x.jpg?v=1646731094",
+          "subject": " Adafruit BNO055 9-DOF Absolute Orientation IMU Fusion Breakout"
+        },
+        {
+          "source": "– Dev Boards Market (https://devboardsmarket.com/products/adafruit-9-dof-absolute-orientation-imu-fusion-breakout-bno055)",
+          "image": "https://devboardsmarket.com/cdn/shop/files/Adafruit_9-DOF_Absolute_Orientation_IMU_Fusion_Breakout_-_BNO055_76ede310-bc38-4d83-a3b1-faa609c17c7d.jpg?v=1751391943&width=1100",
+          "subject": " Adafruit BNO055 9-DOF IMU Fusion Breakout"
+        }
+      ]
+    },
+    {
+      "name": "Temperature & humidity",
+      "family": "Sensors",
+      "atlas": "/groups/atlas-5.webp",
+      "tile": 1,
+      "query": "DHT22 DS18B20 SHT31 temperature humidity sensor",
+      "references": [
+        {
+          "source": "Dht11 Vs Ds18B20 at Rebecca Skinner blog (https://storage.googleapis.com/dbiveisqhwwwke/dht11-vs-ds18b20.html)",
+          "image": "https://res.cloudinary.com/openmicrolab/image/upload/v1564199790/Temp_Sensor_tw7jru.png",
+          "subject": " Sensor Comparison Table"
+        },
+        {
+          "source": "GitHub - quen0n/unitemp-flipperzero: Flipper Zero application for reading temperature, humidity and pressure sensors like a DHT11/22, DS18B20, BMP280, HTU21 and more (https://github.com/quen0n/unitemp-flipperzero)",
+          "image": "https://user-images.githubusercontent.com/10090793/215605424-54b1c08c-e41b-4fb4-b966-dd959507200b.png",
+          "subject": " Sensor Specification Comparison Table"
+        },
+        {
+          "source": "Testing Temperature Sensors - Which One for Me? : 15 Steps (with Pictures) - Instructables (https://www.instructables.com/Testing-Temperature-Sensors-Which-One-for-Me/)",
+          "image": "https://content.instructables.com/F1K/WJRY/JXAO3NLZ/F1KWJRYJXAO3NLZ.jpg",
+          "subject": " Temperature Sensor Prototyping Setup"
+        }
+      ]
+    },
+    {
+      "name": "Pressure sensors",
+      "family": "Sensors",
+      "atlas": "/groups/atlas-5.webp",
+      "tile": 2,
+      "query": "BMP280 BME280 pressure sensor module",
+      "references": [
+        {
+          "source": "Acheter BME280 BMP280 capteur numérique température humidité capteur de pression barométrique Module I2C SPI 1.8-5 V GY-BME280 5 V/3.3 V | Joom (https://www.joom.com/fr/products/64cf5e1c3899ad01e54e230a)",
+          "image": "https://img.joomcdn.net/76b5b04059fc2735c46017c960dc7aed0d09136c_original.jpeg",
+          "subject": " GY-BME280/BMP280 Pressure Sensor Module"
+        },
+        {
+          "source": "ELEMON - BME280-MODULE-PS-NB115 - AR674NB115 - KSH: ATMOSPHERIC PRESSURE BME280 SENSOR MODULE—Electrónica Elemon® (https://www.elemon.com.ar/products/detail/code/AR674NB115)",
+          "image": "https://www.elemon.com.ar/images/productos/imagenes/arduino/sensor-module/atmospheric-pressure-module-sensor-bme280.png",
+          "subject": " BME/BMP280 Atmospheric Pressure Sensor Module"
+        },
+        {
+          "source": "BMP280 Pressure Sensor Arduino High Precision Temperature Altitude – eElectronicParts (https://www.eelectronicparts.com/products/bmp280-pressure-sensor-arduino-high-precision-temperature-humidity)",
+          "image": "https://www.eelectronicparts.com/cdn/shop/products/bmp280-pressure-sensor-arduino-high-precision-temperature-altitude_1024x1024.jpg?v=1598995589",
+          "subject": " BMP280 High-Precision Temperature and Pressure Sensor Module"
+        }
+      ]
+    },
+    {
+      "name": "Distance & proximity",
+      "family": "Sensors",
+      "atlas": "/groups/atlas-5.webp",
+      "tile": 3,
+      "query": "HC SR04 VL53L0X infrared proximity distance sensor",
+      "references": [
+        {
+          "source": "VL53L0X I2C Time-of-Flight (ToF) Laser Ranging Sensor GY-VL53L0XV2 Laser Distance Module 940nm - ขาย Arduino อุปกรณ์ฯ ,ESR meter 18650 : Inspired by LnwShop.com (v2) (https://www.mcucity.com/product/2969/vl53l0x-i2c-time-of-flight-tof-laser-ranging-sensor-gy-vl53l0xv2-laser-distance-module-940nm-2)",
+          "image": "https://inwfile.com/s-j/401pu0.gif",
+          "subject": " VL53L0X Time-of-Flight Distance Sensor Module"
+        },
+        {
+          "source": "GY-530 Kızılötesi Mesafe Ölçüm Modülü - VL53L0X | Voltaj (https://www.voltaj.net/gy-530-kizilotesi-mesafe-olcum-modulu-vl53l0x-pmu35300)",
+          "image": "https://platincdn.com/4420/pictures/DKVBE214439_RB-346-2.jpg",
+          "subject": " GY-530 VL53L0X Infrared Distance Sensor Module"
+        },
+        {
+          "source": "GY-VL53L0XV2 Laser Distance Module – Xpart Electronic (https://xpart.org/product/gy-vl53l0xv2-laser-distance-module/)",
+          "image": "https://xpart.org/wp-content/uploads/2023/12/GY-VL53L0XV2-3_result.webp",
+          "subject": " VL53L0X ToF Laser Distance Module Breakout"
+        }
+      ]
+    },
+    {
+      "name": "Light sensors",
+      "family": "Sensors",
+      "atlas": "/groups/atlas-6.webp",
+      "tile": 0,
+      "query": "LDR BH1750 photodiode light sensor",
+      "references": [
+        {
+          "source": "Dijital Işık Şiddet Sensörü - BH1750FVI Modül | Komponentci (https://www.komponentci.net/dijital-isik-siddet-sensoru-bh1750fvi-modul-pmu12081)",
+          "image": "https://platincdn.com/3106/pictures/HQDDB231723_RB-328-1.jpg",
+          "subject": " BH1750 Digital Light Sensor Module"
+        },
+        {
+          "source": "Lichtintensiteitssensor BH1750 16-bit I2C - OTRONIC (https://www.otronic.nl/nl/lichtintensiteitssensor-bh1750-16-bit-i2c.html)",
+          "image": "https://cdn.webshopapp.com/shops/346407/files/421720746/otronic-lichtintensiteitssensor-bh1750-16-bit-i2c.jpg",
+          "subject": " BH1750 16-bit I2C Light Intensity Sensor Module"
+        },
+        {
+          "source": "Sensor de Luminosidad Digital BH1750 (https://www.ferretronica.com/products/sensor-de-luminosidad-digital-bh1750)",
+          "image": "https://www.ferretronica.com/cdn/shop/products/Sensor_de_luminocidad_digital_BH1750_ferretronica_da3a02a0-327e-4f51-8e80-a4484b448209_x700.jpg?v=1577500768",
+          "subject": " BH1750 Digital Light Sensor Module"
+        }
+      ]
+    },
+    {
+      "name": "Current & voltage sensors",
+      "family": "Sensors",
+      "atlas": "/groups/atlas-6.webp",
+      "tile": 1,
+      "query": "INA219 ACS712 voltage current sensor module",
+      "references": [
+        {
+          "source": "Pomiar Prądu Arduino - Niska cena na Allegro (https://allegro.pl/listing?string=pomiar+pr%C4%85du+arduino)",
+          "image": "https://a.allegroimg.com/original/1185e3/79b127c44c9981ee1600845809f5/Modul-pomiaru-pradu-natezenia-napiecia-MCU219-INA219-I2C-Arduino-ESP",
+          "subject": " INA219 I2C Current and Voltage Sensor Module"
+        },
+        {
+          "source": "– Касабов Електроникс (https://kasabov.eu/products/modul-za-izmervane-tok-i-naprejenie-ina219-i2c)",
+          "image": "https://kasabov.eu/cdn/shop/files/05a3be3e3a2d9a4ff8f9f6a50fe6c8b1.jpg?v=1767390311&width=1946",
+          "subject": " INA219 I2C Current and Voltage Sensor Module"
+        },
+        {
+          "source": "Sensor de corriente y voltaje INA219 (https://www.electronicadiy.com/products/sensor-de-corriente-y-voltaje-ina219)",
+          "image": "https://www.electronicadiy.com/cdn/shop/files/Sensor_de_corriente_y_voltaje_INA219_Electr_nica_DIY_Guatemala_700x700.jpg?v=1747414833",
+          "subject": " INA219 DC Current and Voltage Sensor Module"
+        }
+      ]
+    },
+    {
+      "name": "Magnetic sensors",
+      "family": "Sensors",
+      "atlas": "/groups/atlas-6.webp",
+      "tile": 2,
+      "query": "A3144 hall effect HMC5883L magnetometer sensor",
+      "references": [
+        {
+          "source": "- Linh Kiện Điện Tử TPHCM - Chuyên cung cấp linh kiện điện tử giá rẻ tại TP.HCM (https://linhkiendientutphcm.com/module-cam-bien-la-ban-dien-tu-so-hmc5883l)",
+          "image": "https://bizweb.dktcdn.net/thumb/grande/100/374/971/products/module-cam-bien-tu-truong-hmc5883l.jpg?v=1779425592660",
+          "subject": " HMC5883L 3-Axis Digital Compass Module"
+        },
+        {
+          "source": "– REES52 (https://rees52.com/products/ms5611-hmc5883l-mpu6050-sensor-module-gy-86-10dof-module-mwc-flight-control-nb037)",
+          "image": "https://rees52.com/cdn/shop/products/20198.jpg?v=1702154684&width=1445",
+          "subject": " GY-273 HMC5883L Three-Axis Magnetometer Module"
+        },
+        {
+          "source": "Jual Sensor magnet Hall effect Element A3144 A3144E A 3144 OH 3144 | Shopee Indonesia (https://shopee.co.id/Sensor-magnet-Hall-effect-Element-A3144-A3144E-A-3144-OH-3144-i.59464640.29824831919)",
+          "image": "https://down-id.img.susercontent.com/file/sg-11134201-7rbn8-m5n6b0gm4hncdb",
+          "subject": " A3144 Hall Effect Magnet Sensor"
+        }
+      ]
+    },
+    {
+      "name": "Force & load sensors",
+      "family": "Sensors",
+      "atlas": "/groups/atlas-6.webp",
+      "tile": 3,
+      "query": "FSR load cell strain gauge force sensor",
+      "references": [
+        {
+          "source": "Force round sensor - Sensitive Resistance (FSR) Interlink 402 - Boutique Semageek (https://boutique.semageek.com/en/379-force-round-sensor-sensitive-resistance-fsr-interlink-402.html)",
+          "image": "https://boutique.semageek.com/993-thickbox_default/force-round-sensor-sensitive-resistance-fsr-interlink-402.jpg",
+          "subject": " Round Force-Sensitive Resistor with Scale Reference"
+        },
+        {
+          "source": "SS-U-N-S-00009 | I.E.E. FSR Series Low Profile Strain Gauge, Compression, Tension Measure, 1mΩ | RS (https://au.rs-online.com/web/p/strain-gauges/1895562)",
+          "image": "https://media.rs-online.com/image/upload/bo_1.5px_solid_white%2Cb_auto%2Cc_pad%2Cdpr_2%2Cf_auto%2Ch_399%2Cq_auto%2Cw_710/c_pad%2Ch_399%2Cw_710/F1895562-01?pgw=1",
+          "subject": " I.E.E. FSR Series Low Profile Strain Gauge"
+        },
+        {
+          "source": "FSR402 0.5\" Thin Film Force Sensor Pressure Sensor 0-10kg for Arduino | Shopee Thailand (https://shopee.co.th/FSR402-0.5-Thin-Film-Force-Sensor-Pressure-Sensor-0-10kg-for-Arduino-i.99154978.22885162957)",
+          "image": "https://down-th.img.susercontent.com/file/sg-11134201-7rdwm-lylxlntxqo2ied",
+          "subject": " FSR402 0.5\" Thin Film Force Sensor"
+        }
+      ]
+    },
+    {
+      "name": "Gas & air sensors",
+      "family": "Sensors",
+      "atlas": "/groups/atlas-7.webp",
+      "tile": 0,
+      "query": "MQ2 SGP30 CCS811 gas air sensor module",
+      "references": [
+        {
+          "source": "Adafruit CCS811 Air Quality Sensor Breakout - VOC and eCO2 | Buy in Australia | ADA3566 | Core Electronics (https://core-electronics.com.au/adafruit-ccs811-air-quality-sensor-breakout-voc-and-eco2.html)",
+          "image": "https://core-electronics.com.au/media/catalog/product/cache/d5cf359726a1656c2b36f3682d3bbc67/3/5/3566-01.jpg",
+          "subject": " Adafruit CCS811 Air Quality Sensor Breakout"
+        },
+        {
+          "source": "– Keszoox (https://keszoox.com/products/sgp41-sgp40-sgp30-air-quality-sensor-module-tvoc-eco2-formaldehyde-gas-detector-for-arduino-and-raspberry-pi)",
+          "image": "https://keszoox.com/cdn/shop/files/sgp41-sgp40-sgp30-air-quality-sensor-module-tvoc-eco2-formaldehyde-gas-detector-arduino-raspberry-pi.webp?v=1761023327",
+          "subject": " GY-SGP30/40/41 MOX Gas Sensor Modules"
+        },
+        {
+          "source": "CCS811 Air Quality Gas Sensor Module CO2 TVOC Detection I2C Output | eBay (https://www.ebay.com/itm/395555304600)",
+          "image": "https://i.ebayimg.com/images/g/5SwAAOSwjyVlbUfW/s-l1200.jpg",
+          "subject": " CCS811 Air Quality Gas Sensor Module"
+        }
+      ]
+    },
+    {
+      "name": "Encoders",
+      "family": "Sensors",
+      "atlas": "/groups/atlas-7.webp",
+      "tile": 1,
+      "query": "rotary optical magnetic encoder electronic components",
+      "references": [
+        {
+          "source": "292V1X24B CTS Electrocomponents | Encoders | DigiKey (https://www.digikey.com/en/products/detail/cts-electrocomponents/292V1X24B/12091627)",
+          "image": "https://media.digikey.com/Photos/CTS%20Photos/MFG_292V1Xxxx.jpg",
+          "subject": " CTS 292V1X24B Optical Rotary Encoder"
+        },
+        {
+          "source": "62S15-M5-P Grayhill Inc. | Encoders | DigiKey (https://www.digikey.com/en/products/detail/grayhill-inc/62S15-M5-P/1834980)",
+          "image": "https://media.digikey.com/photos/Grayhill%20Photos/62S15-M5-P.JPG",
+          "subject": " Grayhill 62S15-M5-P Optical Rotary Encoder"
+        },
+        {
+          "source": "61C11-01-08-02 GRAYHILL, Rotary Encoder, Optical, Incremental | element14 Malaysia (https://my.element14.com/grayhill/61c11-01-08-02/optical-encoder/dp/1653383)",
+          "image": "https://my.element14.com/productimages/large/en_GB/1653383-40.jpg",
+          "subject": " Grayhill 61C11-01-08-02 Optical Incremental Rotary Encoder"
+        }
+      ]
+    },
+    {
+      "name": "Microcontrollers",
+      "family": "ICs & boards",
+      "atlas": "/groups/atlas-7.webp",
+      "tile": 2,
+      "query": "ATmega328P STM32 PIC microcontroller IC",
+      "references": [
+        {
+          "source": "ATMEGA328P-AUR MICROCHIP, 8 Bit MCU, Low Power High Performance, AVR ATmega Family ATmega328 Series Microcontrollers | Newark Electronics Mexico (https://mexico.newark.com/en-MX/microchip/atmega328p-aur/microcontroller-mcu-8-bit-atmega/dp/87W8111)",
+          "image": "https://mexico.newark.com/productimages/large/en_US/5162141.jpg",
+          "subject": " ATmega328P-AU 32-Pin TQFP Microcontroller"
+        },
+        {
+          "source": "New and Original Electric Component IC Chip Hi7191ib - IC Chips and Electric Component (https://kyxding888.en.made-in-china.com/product/eFbfqoJdwBYZ/China-New-and-Original-Electric-Component-IC-Chip-Hi7191ib.html)",
+          "image": "https://image.made-in-china.com/202f0j00AmChprWFkRzO/New-and-Original-Electric-Component-IC-Chip-Hi7191ib.webp",
+          "subject": " Atmel ATmega328P Microcontroller IC Chips"
+        },
+        {
+          "source": "Ltc3621idcb-25#Trmpbf Integrated Circuit in Stock Original Semiconductor - Integrated Circuit IC and Diode Mosfet Connector (https://emi-ic.en.made-in-china.com/product/lEOpHsGbnDcX/China-Ltc3621idcb-25-Trmpbf-Integrated-Circuit-in-Stock-Original-Semiconductor.html)",
+          "image": "https://image.made-in-china.com/2f0j00tIEcBkQysqbT/Ltc3621idcb-25-Trmpbf-Integrated-Circuit-in-Stock-Original-Semiconductor.webp",
+          "subject": " Atmel ATmega328P Microcontroller Packages"
+        }
+      ]
+    },
+    {
+      "name": "Development boards",
+      "family": "ICs & boards",
+      "atlas": "/groups/atlas-7.webp",
+      "tile": 3,
+      "query": "Arduino Nano ESP32 Raspberry Pi Pico development boards",
+      "references": [
+        {
+          "source": "<Arduino UNO> | Yash Kumar (https://www.linkedin.com/posts/kyashf_my-microcontroller-development-boards-collection-activity-7190030634457657344-ZOYZ)",
+          "image": "https://media.licdn.com/dms/image/v2/D5622AQFWgQ4CllCndQ/feedshare-shrink_800/feedshare-shrink_800/0/1714236885916?e=2147483647&t=277cCj0DtDaRUSurwdaZBLnt4hpKiTS4esfeS597LBI&v=beta",
+          "subject": " Microcontroller Development Boards Collection"
+        },
+        {
+          "source": "Assignments - Andre Mamani | Fab Academy (https://fabacademy.org/2026/labs/ulima/students/andre-mamani/Week4.html)",
+          "image": "https://fabacademy.org/2026/labs/ulima/students/andre-mamani/assets/Week4/Captura%20de%20pantalla%202026-02-15%20181933.webp",
+          "subject": " Microcontroller Development Board Comparison"
+        },
+        {
+          "source": "What Is a Microcontroller? The Tiny Brain Behind Every IoT Device (https://www.linkedin.com/pulse/what-microcontroller-tiny-brain-behind-every-iot-device-katlinski-eheof)",
+          "image": "https://media.licdn.com/dms/image/v2/D4D12AQGvBS9X0YB4XA/article-inline_image-shrink_400_744/B4DZdjT7CNH4AY-/0/1749717862179?e=2147483647&t=-gUjY--hOU0YtagvqZdjU4nC03VialXrj3XVLt1oOQE&v=beta",
+          "subject": " Microcontroller Development Boards Showcase"
+        }
+      ]
+    },
+    {
+      "name": "Logic ICs",
+      "family": "ICs & boards",
+      "atlas": "/groups/atlas-8.webp",
+      "tile": 0,
+      "query": "74HC595 74HC00 logic IC DIP package",
+      "references": [
+        {
+          "source": "Shopee Philippines | Shop Online with Promos and Vouchers (https://shopee.ph/74HC00-74HC04-74HC08-74HC14-74HC138-74HC164-74HC165-74HC595-74HC10-74HC74-74HC139-74HC174-74HC374-74-i.1014097992.23579210035)",
+          "image": "https://down-ph.img.susercontent.com/file/ph-11134201-7r98w-ll9dc1lk6wub0b",
+          "subject": " 74HC Logic IC Value Kit"
+        },
+        {
+          "source": "Arduino Password-based Door Lock using 4x4 Keypad, Servomotor, 74HC595 – CreateLabz Store (https://createlabz.store/blogs/createlabz-tutorials/arduino-password-based-door-lock-using-4x4-keypad)",
+          "image": "https://cdn.shopify.com/s/files/1/0260/1864/4031/products/13699-01_550x825.jpg?v=1601022355",
+          "subject": " SN74HC595N Shift Register Module"
+        },
+        {
+          "source": "74HC595 8 Bit Serial To Parallel Shift Register IC (https://circuit.pk/product/3966)",
+          "image": "https://circuit.pk/product_images/re74aitgawo9wrPonrc1egNNsJqGqqFVQPv9OhQR.jpeg",
+          "subject": " NXP 74HC595N 8-Bit Shift Register"
+        }
+      ]
+    },
+    {
+      "name": "Memory ICs",
+      "family": "ICs & boards",
+      "atlas": "/groups/atlas-8.webp",
+      "tile": 1,
+      "query": "EEPROM flash SRAM memory IC 24LC256",
+      "references": [
+        {
+          "source": "Microchip PIC Programmer (https://www.piccircuit.com/shop/7-pic-programmer)",
+          "image": "https://www.piccircuit.com/shop/892-large_default/24lc256-pdipsoic.jpg",
+          "subject": " Microchip 24LC256 EEPROM Chip"
+        },
+        {
+          "source": "I2C - Module Acquisition et traitement de données : Internet des Objets (https://odli.isc.heia-fr.ch/lecture/mcu/i2c/)",
+          "image": "https://odli.isc.heia-fr.ch/lecture/mcu/img/eeprom.jpeg",
+          "subject": " 24LC256 Serial EEPROM Module"
+        },
+        {
+          "source": "24LC256 24C256 256K bit Serial I2C Bus EEPROM IC DIP-8 Package buy online at Low Price in India - ElectronicsComp.com (https://www.electronicscomp.com/24lc256-ic)",
+          "image": "https://www.electronicscomp.com/image/cache/catalog/24lc256-ic-dip-8-package-800x800.jpg",
+          "subject": " 24LC256 Serial I2C EEPROM"
+        }
+      ]
+    },
+    {
+      "name": "Amplifiers & timers",
+      "family": "ICs & boards",
+      "atlas": "/groups/atlas-8.webp",
+      "tile": 2,
+      "query": "LM358 NE555 LM386 amplifier timer IC",
+      "references": [
+        {
+          "source": "161PCS 20 Model Chip Assortment Set Analog Integrated Circuits Electronics Opamp | eBay (https://www.ebay.com/itm/234901048573)",
+          "image": "https://i.ebayimg.com/images/g/XtIAAOSwfUtj7mV0/s-l1200.jpg",
+          "subject": " 161-Piece Analog IC Assortment Kit"
+        },
+        {
+          "source": "Temu (https://www.temu.com/nz/set-of-40pcs-for-electronics-education--ne555-timer-ua741--amplifier-lm386-amplifier-and-cd4017-counter-in-dip8-16-format-for-breadboard-applications-g-601103354512647.html)",
+          "image": "https://img.kwcdn.com/product/fancy/dbc37766-2c39-4bf8-8006-913e4a7e3b95.jpg",
+          "subject": " Electronics Learning Kit"
+        },
+        {
+          "source": "150 pcs ic chip assortment kit opamps oscillator pwm ne555 lm358 lm324 tda2030 uc3842 uln2003 with sockets and adapter for electronics diy projects Sale - Banggood.com-arrival notice-arrival notice (https://www.banggood.com/150-Pcs-IC-Chip-Assortment-Kit-Opamps-Oscillator-PWM-NE555-LM358-LM324-TDA2030-UC3842-ULN2003-with-Sockets-and-Adapter-for-Electronics-DIY-Projects-p-2023814.html)",
+          "image": "https://imgaz3.staticbg.com/thumb/large/oaupload/banggood/images/78/AE/fc1ad141-507a-4706-b718-15935cdd4070.jpg.webp",
+          "subject": " IC Chip Assortment Kit for DIY Electronics"
+        }
+      ]
+    },
+    {
+      "name": "ADC & DAC",
+      "family": "ICs & boards",
+      "atlas": "/groups/atlas-8.webp",
+      "tile": 3,
+      "query": "ADS1115 MCP3008 MCP4725 ADC DAC breakout",
+      "references": [
+        {
+          "source": "1-10Pcs ADS1115 ADS1015 MCP4725 AD5593 ADS1110 ADS1118 ADS1120 ADS1220 MCP3421 SGM58031 Analog-to-Digital Breakout Board Module | Shopee Philippines (https://shopee.ph/1-10Pcs-ADS1115-ADS1015-MCP4725-AD5593-ADS1110-ADS1118-ADS1120-ADS1220-MCP3421-SGM58031-Analog-to-Digital-Breakout-Board-Module-i.1622086447.49052074042)",
+          "image": "https://down-ph.img.susercontent.com/file/sg-11134201-8224y-mhha3bifkjr796",
+          "subject": " ADC Breakout Module Collection"
+        },
+        {
+          "source": "16 Bit I2C IIC ADS1115 ADS1015 ADS1118 Converter Module PCA9306 ADC Board For Arduino RPi Level Translation Amplifier Chip | Shopee Philippines (https://shopee.ph/16-Bit-I2C-IIC-ADS1115-ADS1015-ADS1118-Converter-Module-PCA9306-ADC-Board-For-Arduino-RPi-Level-Translation-Amplifier-Chip-i.1622086447.43371777618)",
+          "image": "https://down-ph.img.susercontent.com/file/sg-11134201-825ao-mey6s87mwk5g05",
+          "subject": " ADC and I2C Level Converter Modules"
+        },
+        {
+          "source": "Industrial Communication Integrated Circuits Prices in Nigeria (2 Products) | Jumia (https://www.jumia.com.ng/generic-16-bit-i2c-iic-ads1115-ads1015-ads1118-converter-module-pca9306-adc-board-for-arduino-rpi-level-translation-amplifier-378288659.html)",
+          "image": "https://ae01.alicdn.com/kf/H2bdb0bf02fce491db68d7c2c8fbd801c1/16-Bit-I2C-IIC-ADS1115-ADS1015-ADS1118-Converter-Module-PCA9306-ADC-Board-For-Arduino-RPi-Level.jpg",
+          "subject": " ADC Converter and Level Translator Modules"
+        }
+      ]
+    },
+    {
+      "name": "Interface ICs",
+      "family": "ICs & boards",
+      "atlas": "/groups/atlas-9.webp",
+      "tile": 0,
+      "query": "MAX485 MCP2515 CH340 interface module",
+      "references": [
+        {
+          "source": "Mạch chuyển giao tiếp CAN MCP2515 (https://hshop.vn/mach-chuyen-giao-tiep-can-mcp2515)",
+          "image": "https://bizweb.dktcdn.net/100/522/662/products/z6148706240538-2bba52d1f5d1d242091aac4fea714c76-1.jpg?v=1734677623603",
+          "subject": " MCP2515 CAN Bus Communication Module"
+        },
+        {
+          "source": "MCP2515 EF02037 CAN BUS Shield Controller Board Communication Speed Hi – diymore (https://www.diymore.cc/products/mcp2515-ef02037-can-bus-shield-controller-board-communication-speed-high-can-v2-0b-module-for-arduino-for-freaduino-diy-kit)",
+          "image": "https://ae01.alicdn.com/kf/Hcb173ef6384a40988b7dd006ca561947L.jpg",
+          "subject": " MCP2515 EF02037 CAN-BUS Shield Module"
+        },
+        {
+          "source": "MCP2515 Module CAN Bus TJA1050 Receiver Transceiver SPI Arduino – eElectronicParts (https://www.eelectronicparts.com/products/mcp2515-module-can-bus-tja1050-receiver-transceiver-spi-arduino)",
+          "image": "https://www.eelectronicparts.com/cdn/shop/files/b1c09b53-5f5c-511b-b404-93838371c882_grande.jpg?v=1709018338",
+          "subject": " MCP2515 CAN Bus TJA1050 SPI Module"
+        }
+      ]
+    },
+    {
+      "name": "Wireless modules",
+      "family": "ICs & boards",
+      "atlas": "/groups/atlas-9.webp",
+      "tile": 1,
+      "query": "NRF24L01 HC05 RFM95 LoRa wireless module",
+      "references": [
+        {
+          "source": "Bluetooth Modules in Pakistan | Chip.pk (https://www.chip.pk/collections/bluetooth-modules)",
+          "image": "https://www.chip.pk/cdn/shop/collections/Bluetooth_Modules.png?v=1783435032",
+          "subject": " Assorted Bluetooth Modules Collection"
+        },
+        {
+          "source": "Electronic Module Esp8266 WiFi Module Hc06 Bluetooth Module Si4432 Wireless Transceiver Module Communication Module - Electronic Module and Module (https://nileswu12.en.made-in-china.com/product/JKwxQnbdXeRy/China-Electronic-Module-Esp8266-WiFi-Module-Hc06-Bluetooth-Module-Si4432-Wireless-Transceiver-Module-Communication-Module.html)",
+          "image": "https://image.made-in-china.com/2f0j00pTzRKfStjcua/Electronic-Module-Esp8266-WiFi-Module-Hc06-Bluetooth-Module-Si4432-Wireless-Transceiver-Module-Communication-Module.jpg",
+          "subject": " Wireless Communication Modules Showcase"
+        },
+        {
+          "source": "Electronic Module Esp8266 WiFi Module Hc05 Bluetooth Module Jdy-17 Transmission Module Communication Module - Electronic Module and Module (https://nileswu12.en.made-in-china.com/product/bXFmpCqByMRK/China-Electronic-Module-Esp8266-WiFi-Module-Hc05-Bluetooth-Module-Jdy-17-Transmission-Module-Communication-Module.html)",
+          "image": "https://image.made-in-china.com/2f0j00rEzRwWnIbquJ/Electronic-Module-Esp8266-WiFi-Module-Hc05-Bluetooth-Module-Jdy-17-Transmission-Module-Communication-Module.jpg",
+          "subject": " Wireless Communication Modules Collection"
+        }
+      ]
+    },
+    {
+      "name": "Switches & buttons",
+      "family": "Switching & motion",
+      "atlas": "/groups/atlas-9.webp",
+      "tile": 2,
+      "query": "tactile toggle slide pushbutton electronic switch",
+      "references": [
+        {
+          "source": "PS-12D01 - MINFCN Electronics Co., Ltd (https://www.minfcn.com/en/product_100721.html)",
+          "image": "https://cdn.xuansiwei.com/andyh7207/1702012385656/1-1Z50519352Ea_fuben.jpg?x-oss-process=image%2Fwatermark%2Ctype_d3F5LXplbmhlaQ%2Csize_12%2Ctext_TUlORkNO%2Ccolor_FFFFFF%2Cshadow_50%2Ct_100%2Cg_se%2Cx_10%2Cy_10",
+          "subject": " PS-12D01 Tactile Slide Switch"
+        },
+        {
+          "source": "10pcs Ss12f15 Ss12f15vg4 Toggle Switch 3pin 1p2t Slide Switch Handle High 4mm | Daraz.lk (https://www.daraz.lk/products/10pcs-ss12f15-ss12f15vg4-toggle-switch-3pin-1p2t-slide-switch-handle-high-4mm-i504287224.html)",
+          "image": "https://laz-img-sg.alicdn.com/p/04c91fbb9b85d74914bf0691cb3ae0da.jpg",
+          "subject": " SS12F15VG4 Slide Toggle Switch Pack"
+        },
+        {
+          "source": "Ss12f32 Toggle Switch Interruptor Mini Slide Switches 3pin - Slide Switch Ss12f32 and Toy Power Slide Switch (https://m.made-in-china.com/product/Ss12f32-Toggle-Switch-Interruptor-Mini-Slide-Switches-3pin-2151310215.html)",
+          "image": "https://image.made-in-china.com/202f0j00YESemIBgLZbj/Ss12f32-Toggle-Switch-Interruptor-Mini-Slide-Switches-3pin.webp",
+          "subject": " SS12F32 Mini Slide Toggle Switch"
+        }
+      ]
+    },
+    {
+      "name": "Relays",
+      "family": "Switching & motion",
+      "atlas": "/groups/atlas-9.webp",
+      "tile": 3,
+      "query": "SRD05V relay reed solid state relay",
+      "references": [
+        {
+          "source": "Relé MD-5 5VDC 500MA 4 Pinos Na | Achei Componentes (https://www.acheicomponentes.com.br/reles/rele-md-5-5vdc-500ma-4-pinos-na-sun-hold-sip-reed-relay)",
+          "image": "https://images.tcdn.com.br/img/img_prod/648216/rele_md_5_5vdc_500ma_4_pinos_na_sun_hold_sip_reed_relay_137371_2_601e643f698472f6ab32901ca070cf70.jpg",
+          "subject": " Sun Hold MD-5 5VDC SIP Reed Relay"
+        },
+        {
+          "source": "BRM SSR solid-state relay DC-DC small pin PCB circuit board 5A DC controll DC | eBay (https://www.ebay.com/itm/266277419573)",
+          "image": "https://i.ebayimg.com/images/g/iL0AAOSw8oZkdcm8/s-l1200.png",
+          "subject": " BRM-DD60-5A PCB Solid-State Relay"
+        },
+        {
+          "source": "BRM SSR Solid-State Relay DC-AC Small Pin PCB Circuit Board 5A DC Controll AC | eBay (https://www.ebay.com/itm/266278775086)",
+          "image": "https://i.ebayimg.com/images/g/xtwAAOSwl0ZkdxmU/s-l1200.png",
+          "subject": " BRM-D480-5A PCB Solid-State Relay"
+        }
+      ]
+    },
+    {
+      "name": "Motors & solenoids",
+      "family": "Switching & motion",
+      "atlas": "/groups/atlas-10.webp",
+      "tile": 0,
+      "query": "DC gear stepper motor solenoid miniature",
+      "references": [
+        {
+          "source": "VSM15128 Worm Shaft 5V DC 15mm Stepper Motor with Worm Gear and Pinion Gear (https://www.micro-steppermotor.com/sale-41215013-vsm15128-worm-shaft-5v-dc-15mm-stepper-motor-with-worm-gear-and-pinion-gear.html)",
+          "image": "https://www.micro-steppermotor.com/photo/ps160770513-vsm15128_worm_shaft_5v_dc_15mm_stepper_motor_with_worm_gear_and_pinion_gear.jpg",
+          "subject": " VSM15128 5V DC 15mm Worm Shaft Stepper Motor"
+        },
+        {
+          "source": "5 Volt 10mm Micro Stepper Motor, Compact 2 Phase 4 Wire Disesuaikan Dc Geared Motor VSM10-816G (https://indonesian.micro-steppermotor.com/sale-11929429-5-volt-10mm-micro-stepper-motor-compact-2-phase-4-wire-customized-dc-geared-motor-vsm10-816g.html)",
+          "image": "https://indonesian.micro-steppermotor.com/photo/ps23848025-5_volt_10mm_micro_stepper_motor_compact_2_phase_4_wire_customized_dc_geared_motor_vsm10_816g.jpg",
+          "subject": " 5 V 10 mm Micro Stepper Motor with Precision Gearbox"
+        },
+        {
+          "source": "Gear DC 5V/12V/24V Mini Micro Stepper Motor for Air Conditioning/Medical Equipment - 12 Volt Gear Motor and Stepper Motor (https://cjcmotor.en.made-in-china.com/product/PtarXfTGjAkW/China-Gear-DC-5V-12V-24V-Mini-Micro-Stepper-Motor-for-Air-Conditioning-Medical-Equipment.html)",
+          "image": "https://image.made-in-china.com/202f0j00onLbFWaEJQcG/Gear-DC-5V-12V-24V-Mini-Micro-Stepper-Motor-for-Air-Conditioning-Medical-Equipment.webp",
+          "subject": " Mini Micro DC Gear Stepper Motors"
+        }
+      ]
+    },
+    {
+      "name": "Servos",
+      "family": "Switching & motion",
+      "atlas": "/groups/atlas-10.webp",
+      "tile": 1,
+      "query": "SG90 MG996R micro servo motor",
+      "references": [
+        {
+          "source": "Elexhub (https://www.elexhub.com/shop/96Yrxp)",
+          "image": "https://www.elexhub.com/images/items/96Yrxp0.jpg",
+          "subject": " RC Servo Motor Kit"
+        },
+        {
+          "source": "Shopee Indonesia | Situs Belanja Online Terlengkap & Terpercaya (https://shopee.co.id/Motor-Servo-MG996R-MG996-Metal-Gear-360-Degree-Continuous-i.533505386.44312391601)",
+          "image": "https://down-id.img.susercontent.com/file/id-11134207-7ra0t-mdbgmxsyjum041",
+          "subject": " MG996R Metal Gear Servo Kit"
+        },
+        {
+          "source": "DAC Components – Widest Choose of Electronic Components, Measuring Instruments and Power Supplies (https://dac.ge/en/?product=48443)",
+          "image": "https://dac.ge/images/og/?image=09679",
+          "subject": " MG996R Analog Servo Motor Kit"
+        }
+      ]
+    },
+    {
+      "name": "Motor drivers",
+      "family": "Switching & motion",
+      "atlas": "/groups/atlas-10.webp",
+      "tile": 2,
+      "query": "L298N A4988 DRV8825 motor driver module",
+      "references": [
+        {
+          "source": "3D-S Nyomtató Alkatrészek A4988 Drv8825 Stepper Motoros Meghajtó Hűtőbordával Skr V1.3 1.4 Gtr V1.0 Rámpák 1.4 1.6 Mks Gen V1.4 Tábla – FIXO.hu (https://fixo.hu/termek/3d-s-nyomtato-alkatreszek-a4988-drv8825-stepper-motoros-meghajto-hutobordaval-skr-v1-3-1-4-gtr-v1-0-rampak-1-4-1-6-mks-gen-v1-4-tabla/)",
+          "image": "https://acdn.hu/fixo/2021/11/27/3D-Printer-Parts-A4988-DRV8825-Stepper-Motor-Driver-With-Heat-sink-For-SKR-V1-3-1.jpg",
+          "subject": " Stepper Motor Driver Modules"
+        },
+        {
+          "source": "3D Printer Parts A4988 DRV8825 Stepper Motor Driver With Heat sink For SKR V1.3 1.4 GTR V1.0 RAMPS 1.4 1.6 MKS GEN V1.4 | Shopee Philippines (https://shopee.ph/3D-Printer-Parts-A4988-DRV8825-Stepper-Motor-Driver-With-Heat-sink-For-SKR-V1.3-1.4-GTR-V1.0-RAMPS-1.4-1.6-MKS-GEN-V1.4-i.1352015578.25685905868)",
+          "image": "https://down-ph.img.susercontent.com/file/sg-11134201-7rdyl-m017kpcd5149d2",
+          "subject": " HBY Stepper Motor Driver Modules"
+        },
+        {
+          "source": "Buy Original Chip Drv8825 Purple A4988 Red Green Stepper Motor Driver With Heat Sink With Retail Packaging from Shenzhen Aizesheng Technology Co., Ltd., China | Tradewheel.com (https://www.tradewheel.com/p/original-chip-drv8825-purple-a4988-red-2756276/)",
+          "image": "https://img2.tradewheel.com/uploads/images/mce_uploads/original-chip-drv8825-purple-a4988-red-green-stepper-motor-driver-with-heat-sink-with-retail-packaging1-0513307001734909818.jpg",
+          "subject": " Colored Stepper Motor Driver Modules"
+        }
+      ]
+    },
+    {
+      "name": "Fans & cooling",
+      "family": "Switching & motion",
+      "atlas": "/groups/atlas-10.webp",
+      "tile": 3,
+      "query": "40mm fan heatsink Peltier cooling electronic",
+      "references": [
+        {
+          "source": "Thermoelectric Peltier Refrigeration Cooling Water Cooler Fan System Heatsink | eBay (https://www.ebay.com/itm/303220912910)",
+          "image": "https://i.ebayimg.com/images/g/XC8AAOSwfCZdJ01S/s-l1200.jpg",
+          "subject": " Thermoelectric Peltier Cooling Module"
+        },
+        {
+          "source": "50W DIY Thermoelectric Cooler Cooling System Semiconductor Refrigeration System Kit Heatsink Peltier Cooler for 15L Water (https://zemfiraaksenova.blogspot.com/2019/12/50w-diy-thermoelectric-cooler-cooling.html)",
+          "image": "https://imgaz.staticbg.com/images/oaupload/ser1/banggood/images/4C/1E/6d8d84a4-b0ab-42ae-a30c-d91c7994b292.JPG",
+          "subject": " 50W Peltier Thermoelectric Cooler Kit"
+        },
+        {
+          "source": "CN5 40mm 5V 쿨링팬 방열판 세트 열전소자 펠티어 - 싸이피아 (https://m.scipia.com/product/cn5-40mm-5v-%EC%BF%A8%EB%A7%81%ED%8C%AC-%EB%B0%A9%EC%97%B4%ED%8C%90-%EC%84%B8%ED%8A%B8-%EC%97%B4%EC%A0%84%EC%86%8C%EC%9E%90-%ED%8E%A0%ED%8B%B0%EC%96%B4/1028/)",
+          "image": "https://m.scipia.com/web/product/big/202109/6a215fad19d6d4f5b9f98ca8e0ced89f.jpg",
+          "subject": " CN5 40mm 5V Cooling Fan and Heatsink Set"
+        }
+      ]
+    },
+    {
+      "name": "LEDs",
+      "family": "Light & sound",
+      "atlas": "/groups/atlas-11.webp",
+      "tile": 0,
+      "query": "through hole RGB SMD LED electronic components",
+      "references": [
+        {
+          "source": "RGB/RGY Compact LEDs - Kingbright | Mouser (https://www.mouser.kr/new/kingbright/kingbright-rgb-rgy-leds/)",
+          "image": "https://www.mouser.kr/images/marketingid/2017/img/176990622.png?v=080624.0113",
+          "subject": " Kingbright RGB/RGY Compact LEDs"
+        },
+        {
+          "source": "Practical 6028 RGB LED Reverse Mount 3528 SMD For Mechanical Keyboard Lighting (https://www.lanjinlight.com/sale-40927763-practical-6028-rgb-led-reverse-mount-3528-smd-for-mechanical-keyboard-lighting.html)",
+          "image": "https://www.lanjinlight.com/photo/ps170811732-practical_6028_rgb_led_reverse_mount_3528_smd_for_mechanical_keyboard_lighting.jpg",
+          "subject": " Practical 6028 RGB Reverse-Mount SMD LED"
+        },
+        {
+          "source": "Hamamatsu Photonics RGB LED Through Hole, S4282-51 | RS (https://uk.rs-online.com/web/p/leds/6546782)",
+          "image": "https://res.cloudinary.com/rsc/image/upload/bo_1.5px_solid_white%2Cb_auto%2Cc_pad%2Cdpr_2%2Cf_auto%2Ch_399%2Cq_auto%2Cw_710/c_pad%2Ch_399%2Cw_710/R6546782-06?pgw=1",
+          "subject": " Hamamatsu Photonics Through-Hole RGB LED"
+        }
+      ]
+    },
+    {
+      "name": "Displays",
+      "family": "Light & sound",
+      "atlas": "/groups/atlas-11.webp",
+      "tile": 1,
+      "query": "OLED LCD seven segment display electronic module",
+      "references": [
+        {
+          "source": "0.91 Inch White OLED Display Module I2C Interface - PiShop.ca (https://www.pishop.ca/product/0-91-inch-white-oled-display-module-i2c-interface/)",
+          "image": "https://cdn11.bigcommerce.com/s-am5zt8xfow/images/stencil/1280x1280/products/2768/8085/Oled-display__38455.1638471942.jpg?c=2",
+          "subject": " 0.91-Inch White OLED Display Module"
+        },
+        {
+          "source": "HALJIA 0.91\" Inch White I2C IIC OLED Serial 128x32 LCD LED Display Mod (https://www.haljia.com/products/haljia-0-91-inch-white-i2c-iic-oled-serial-128x32-lcd-led-display-module-ssd1306-driver-ic-dc-3-3v-5v-compatible-with-arduino-c51-stm32)",
+          "image": "https://www.haljia.com/cdn/shop/products/1_b6998888-ccab-485d-8a32-2d4830fda68d_grande.jpg?v=1638517745",
+          "subject": " HALJIA 0.91\" White OLED I2C Display Module"
+        },
+        {
+          "source": "OLED DISPLEJ 128X32 0,91&quot; MODRÝ I2C SSD1306 ARDUINO ESP STM MODRÝ,  • Ceny, Recenzie - Allegro (https://allegro.sk/produkt/oled-displej-128x32-0-91-modry-i2c-ssd1306-arduino-esp-stm-modry-50bc8aa3-904d-47af-8680-e70fdce45750)",
+          "image": "https://a.allegroimg.com/original/11a62b/315f20cd41f49928ad02a9b49d4c/OLED-DISPLEJ-128X32-0-91-MODRY-I2C-SSD-1306-ARDUINO-ESP-STM-MODRY",
+          "subject": " Blue 0.91-inch OLED Display Module"
+        }
+      ]
+    },
+    {
+      "name": "Buzzers & piezos",
+      "family": "Light & sound",
+      "atlas": "/groups/atlas-11.webp",
+      "tile": 2,
+      "query": "active passive piezo buzzer electronic components",
+      "references": [
+        {
+          "source": "Active and Passive Buzzer- Discussed | Details | Hackaday.io (https://hackaday.io/project/186481-active-and-passive-buzzer-discussed/details)",
+          "image": "https://cdn.hackaday.io/images/9684221658595546582.jpg",
+          "subject": " Passive and Active Piezo Buzzers"
+        },
+        {
+          "source": "What is the correct name for a driven passive buzzer - Page 2 - 3rd Party Boards - Arduino Forum (https://forum.arduino.cc/t/what-is-the-correct-name-for-a-driven-passive-buzzer/1298205?page=2)",
+          "image": "https://europe1.discourse-cdn.com/arduino/original/4X/0/2/c/02c665d8015dd1bd1da9ff5155179dadb2611217.jpeg",
+          "subject": " Comparison of Active and Passive Buzzer Modules"
+        },
+        {
+          "source": "How To Use A Passive Buzzer Module With Arduino 719x474 (https://narodnatribuna.info/lists/a/how-to-use-a-passive-buzzer-module-with-arduino/)",
+          "image": "https://synacorp.my/v3/6047-large_default/active-passive-buzzer-module.jpg",
+          "subject": " Active and Passive Buzzer Modules"
+        }
+      ]
+    },
+    {
+      "name": "Speakers & microphones",
+      "family": "Light & sound",
+      "atlas": "/groups/atlas-11.webp",
+      "tile": 3,
+      "query": "mini speaker electret MEMS microphone electronic",
+      "references": [
+        {
+          "source": "– voice INTER connect GmbH (https://shop.voiceinterconnect.de/en/products/electretmicrophone-em258)",
+          "image": "https://shop.voiceinterconnect.de/cdn/shop/files/em258.jpg?v=1740060887",
+          "subject": " Electret Microphone EM258"
+        },
+        {
+          "source": "Sony Ericsson Ringers (https://mobipart.am/mobileparts/buzzer/ringers-sonyericsson/)",
+          "image": "https://mobipart.am/image/cache/catalog/demo/ringers/uni-mic-600x600.jpg",
+          "subject": " Mobile Phone Microphone/Speaker Components"
+        },
+        {
+          "source": "4013 SMD Microphone Head Bound Type, Green PCB Mount (https://kitsguru.com/products/4013-smd-microphone-head-bound-type-without-capacitor-green-pcb-mount)",
+          "image": "https://kitsguru.com/cdn/shop/files/4013SMDMicrophoneHeadBoundTypeWithoutCapacitor_GreenPCBMount_2048x2048.jpg?v=1744200372",
+          "subject": " 4013 SMD Electret Microphone Heads"
+        }
+      ]
+    },
+    {
+      "name": "Wires",
+      "family": "Wiring & prototyping",
+      "atlas": "/groups/atlas-12.webp",
+      "tile": 0,
+      "query": "hookup wire jumper wire magnet wire electronics",
+      "references": [
+        {
+          "source": "Plusivo AWG22 Hook Up Wire Kit - Solid Tinned Copper Wire of 6 Different Colors x 10 m (33 ft) each (https://www.plusivo.com/awg22-solid-wire-kit/99-plusivo-awg22-hook-up-wire-kit-solid-tinned-copper-wire-of-6-different-colors-x-10-m-33-ft-each.html)",
+          "image": "https://www.plusivo.com/1584-large_default/plusivo-awg22-hook-up-wire-kit-solid-tinned-copper-wire-of-6-different-colors-x-10-m-33-ft-each.jpg",
+          "subject": " Plusivo AWG22 Hook-Up Wire Kit"
+        },
+        {
+          "source": "Plusivo AWG22 Hook Up Wire Kit - Solid Tinned Copper Wire of 6 Different Colors x 10 m (33 ft) each (https://www.plusivo.com/awg22-solid-wire-kit/99-plusivo-awg22-hook-up-wire-kit-solid-tinned-copper-wire-of-6-different-colors-x-10-m-33-ft-each.html)",
+          "image": "https://www.plusivo.com/img/cms/22awg_solid_temp/22awg-solid-003.png",
+          "subject": " Plusivo AWG22 Hook-Up Wire Kit"
+        },
+        {
+          "source": "Making Dupont Wires - General Electronics - Arduino Forum (https://forum.arduino.cc/t/making-dupont-wires/1010803)",
+          "image": "https://europe1.discourse-cdn.com/arduino/original/4X/9/f/9/9f926a58e299fa2b8e163805e3fe4f5d1eab8708.jpeg",
+          "subject": " Plusivo Hook-Up Wire Kit"
+        }
+      ]
+    },
+    {
+      "name": "Cables",
+      "family": "Wiring & prototyping",
+      "atlas": "/groups/atlas-12.webp",
+      "tile": 1,
+      "query": "USB ribbon coaxial cable electronics",
+      "references": [
+        {
+          "source": "CAB01-1,5MGY - Communica [Part No: CAB01-1,5MGY] (https://www.communica.co.za/products/cab01-1-5mgy)",
+          "image": "https://www.communica.co.za/cdn/shop/files/m12-m08x-trj45-t20-pur-cat6a-4835889_900x.jpg?v=1773968107",
+          "subject": " Panel Flex Multistranded Cable"
+        },
+        {
+          "source": "RG174 BNC Male Female To USB Computer Data Coax Cord Cable Connector Adapter | eBay (https://www.ebay.com/itm/256534035008)",
+          "image": "https://i.ebayimg.com/images/g/DBYAAOSwSJRmX3JR/s-l500.jpg",
+          "subject": " RG174 USB-to-BNC Coax Adapter Cable"
+        },
+        {
+          "source": "6 Feet (2 Meter) CCTV Security Camera Video BNC Male To USB  RG59 Coaxial Cable | eBay (https://www.ebay.com/itm/332913675078)",
+          "image": "https://i.ebayimg.com/images/g/928AAOSwD1pcAOEJ/s-l400.jpg",
+          "subject": " 6-Foot BNC-to-USB RG59 Coaxial Cable"
+        }
+      ]
+    },
+    {
+      "name": "Connectors",
+      "family": "Wiring & prototyping",
+      "atlas": "/groups/atlas-12.webp",
+      "tile": 2,
+      "query": "JST terminal block barrel USB connector",
+      "references": [
+        {
+          "source": "RS PRO Straight, Cable Male- 1 Port Type Mini USB Type B USB Connector | RS (https://uk.rs-online.com/web/p/usb-connectors/1792870)",
+          "image": "https://media.rs-online.com/Y1792870-01.jpg",
+          "subject": " RS PRO Mini USB Type B Screw-Terminal Adapter"
+        },
+        {
+          "source": "2.1mm Male Barrel Plug to Terminal Block - Sealevel Systems, Inc (https://www.sealevel.com/2-1mm-male-barrel-plug-to-terminal-block/)",
+          "image": "https://cdn11.bigcommerce.com/s-9fppns058u/images/stencil/original/products/887/1757/dsc_4230-v2__15738.1736530441.jpg?c=1",
+          "subject": " Sealevel USB Hub with Terminal Block Adapter"
+        },
+        {
+          "source": "CZH-LABS USB Type B Female Right Angle Jack Breakout Board, Terminal Block Connector. CZH-LABS D-1011, CZH-LABS MD-D1011R (https://www.czh-labs.com/products/czh-labs-usb-type-b-female-right-angle-jack-breakout-board-terminal-block-connector-1049)",
+          "image": "https://www.czh-labs.com/u_file/1903/products/29/6f84ea74b3.jpg",
+          "subject": " CZH-LABS USB Type B Breakout Board"
+        }
+      ]
+    },
+    {
+      "name": "Pin headers",
+      "family": "Wiring & prototyping",
+      "atlas": "/groups/atlas-12.webp",
+      "tile": 3,
+      "query": "male female right angle pin header electronic",
+      "references": [
+        {
+          "source": "Custom 2 Row Pin Header 2.54mm Pitch DIP Through Hole Right Angle (https://www.jbl-ec.com/custom-2-row-pin-header-2-54mm-pitch-dip-through-hole-right-angle-product/)",
+          "image": "https://www.jbl-ec.com/uploads/dual-row-pin-header-2.54-DIP-right-angle-3.jpg",
+          "subject": " Dual-Row Right-Angle Pin Header Connector"
+        },
+        {
+          "source": "Buy 40 Pin Male & Female Pin Header Strips – High-Quality Berg Connectors for Circuit Boards (https://makerbazar.in/products/40-pin-male-female-header-strip)",
+          "image": "https://makerbazar.in/cdn/shop/files/Machined_Round-Pin_Header_1.jpg?v=1742387241&width=1800",
+          "subject": " 2.54 mm Machined Berg Pin Headers"
+        },
+        {
+          "source": "High-Quality Pin Headers for Electronic Projects Pin Hearder 1013 2.54 Headers - 2.54 Headers and 1013 (https://nbkfhd.en.made-in-china.com/product/cwRtLXmyHHUP/China-High-Quality-Pin-Headers-for-Electronic-Projects-Pin-Hearder-1013-2-54-Headers.html)",
+          "image": "https://image.made-in-china.com/2f0j00OeBhZNVawngM/High-Quality-Pin-Headers-for-Electronic-Projects-Pin-Hearder-1013-2-54-Headers.webp",
+          "subject": " Pin Header Configuration Diagrams"
+        }
+      ]
+    },
+    {
+      "name": "Breadboards",
+      "family": "Wiring & prototyping",
+      "atlas": "/groups/atlas-13.webp",
+      "tile": 0,
+      "query": "solderless breadboard mini full size electronics",
+      "references": [
+        {
+          "source": "Virtual Labs (https://ade-iitr.vlabs.ac.in/exp/general-bread-board/theory.html)",
+          "image": "https://ade-iitr.vlabs.ac.in/exp/general-bread-board/images/fig.2.jpg",
+          "subject": " Breadboard Size Variants"
+        },
+        {
+          "source": "High-Quality Solderless Breadboard 830 Points Prototyping Board for DIY Electronics Projects | Breadboard 400 points | breadboard mini | breadboard small | breadboards | Daraz.pk (https://www.daraz.pk/products/high-quality-solderless-breadboard-830-points-prototyping-board-for-diy-electronics-projects-breadboard-400-points-breadboard-mini-breadboard-small-breadboards-i748572599.html)",
+          "image": "https://img.drz.lazcdn.com/static/pk/p/c3bb23e328e0695043209828636632ed.jpg_720x720q80.jpg",
+          "subject": " Hecto Electronics Breadboard Variants"
+        },
+        {
+          "source": "Solderless Breadboard (Half Size) 400 (Full Size) 830 tie point bread board | Shopee Malaysia (https://shopee.com.my/Solderless-Breadboard-%28Half-Size%29-400-%28Full-Size%29-830-tie-point-bread-board-i.126211897.3663568504)",
+          "image": "https://down-my.img.susercontent.com/file/my-11134207-820l7-mohvnxfaio0110",
+          "subject": " Robotronik Solderless Breadboards"
+        }
+      ]
+    },
+    {
+      "name": "PCBs & adapters",
+      "family": "Wiring & prototyping",
+      "atlas": "/groups/atlas-13.webp",
+      "tile": 1,
+      "query": "perfboard protoboard breakout adapter PCB",
+      "references": [
+        {
+          "source": "Tablero de prototipos, tablero de prototipo de PCB, protoboard perforado de doble cara de 0.100 in, circuito de soldadura de paso – MERCADOSMART (https://mercadosmart.com.co/product/tablero-de-prototipos-tablero-de-prototipo-de-pcb-protoboard-perforado-de-doble-cara-de-0-100-in-circuito-de-soldadura-de-paso/)",
+          "image": "https://m.media-amazon.com/images/I/91pzJXV6sZL.jpg",
+          "subject": " Arduino-Compatible Double-Sided Protoboard Set"
+        },
+        {
+          "source": "Adafruit Small-Size Perma-Proto Raspberry Pi Breadboard PCB Kit - The Pi Hut (https://thepihut.com/products/adafruit-small-size-perma-proto-raspberry-pi-breadboard-pcb-kit)",
+          "image": "https://thepihut.com/cdn/shop/files/adafruit-small-size-perma-proto-raspberry-pi-breadboard-pcb-kit-adafruit-ada1171-42699188076739_900x.jpg?v=1724822393",
+          "subject": " Adafruit Small-Size Perma-Proto Raspberry Pi PCB Kit"
+        },
+        {
+          "source": "Antonio's Banquet & Conference Center | Banquet & Conference Center (https://antoniosbanquet.com/Side-Prototype-Diy-Universal-Printed-Circuit-PCB-Board-870202)",
+          "image": "https://m.media-amazon.com/images/I/71jne9tdaPL._AC_UF894%2C1000_QL80_.jpg",
+          "subject": " Prototyping PCB Perfboard"
+        }
+      ]
+    },
+    {
+      "name": "Antennas",
+      "family": "Wiring & prototyping",
+      "atlas": "/groups/atlas-13.webp",
+      "tile": 2,
+      "query": "WiFi ceramic spring whip antenna electronics",
+      "references": [
+        {
+          "source": "2.4G Built-in Copper Tube 1.13 Cable Omnidirectional WiFi Module Antenna - Spring Antenna and Spring Wire Antenna (https://szantenna.en.made-in-china.com/product/yJeUBfgEHshH/China-2-4G-Built-in-Copper-Tube-1-13-Cable-Omnidirectional-WiFi-Module-Antenna.html)",
+          "image": "https://image.made-in-china.com/202f0j00gCobqvGFrlkc/2-4G-Built-in-Copper-Tube-1-13-Cable-Omnidirectional-WiFi-Module-Antenna.webp",
+          "subject": " Omnidirectional Copper Tube WiFi Module Antennas"
+        },
+        {
+          "source": "Jual Antenna Spring Wifi 3dbi 2.4ghz Ipx Esp32 Esp8266 Di Seller Digpart Malang - Lowokwaru, Kota Malang | Blibli (https://www.blibli.com/p/antenna-spring-wifi-3dbi-2-4ghz-ipx-esp32-esp8266/ps--DIM-70025-00852)",
+          "image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/catalog-image/102/MTA-155940706/no_brand_antenna_spring_wifi_3dbi_2-4ghz_ipx_esp32_esp8266_full04_k3to38o7.jpg",
+          "subject": " Digpart 3dBi Spring WiFi Antenna"
+        },
+        {
+          "source": "2.4GHz Receiver Antenna WiFi Spring Antenna For WiFi Wireless  Manufacturer, Supplier, Exporter (https://www.3antelecom.com/2-4ghz-receiver-antenna-wifi-spring-antenna-for-wifi-wireless-6035307.html)",
+          "image": "https://cpimg.tistatic.com/06035307/b/5/2-4GHz-Receiver-Antenna-WiFi-Spring-Antenna-For-WiFi-Wireless.jpg",
+          "subject": " 2.4GHz WiFi Spring Antenna"
+        }
+      ]
+    },
+    {
+      "name": "Uncategorized",
+      "family": "Wiring & prototyping",
+      "atlas": "/groups/atlas-13.webp",
+      "tile": 3,
+      "query": "electronic component assortment resistor capacitor transistor",
+      "references": [
+        {
+          "source": "YUEONEWIN 1400 Piezas Kit de Componentes Electrónicos Básicos, Condensador Electrolítico, Condensador Cerámico, Diodo LED, Diodo Común, Resistor, Componente Transistor para Arduino, Proyecto Electrónico DIY (https://tiendamia.com/ar/p/amz/b09ytsr9z9)",
+          "image": "https://m.media-amazon.com/images/I/71ieNDZKQ0L._SL1500_.jpg",
+          "subject": " Electronics Component Kit Overview"
+        },
+        {
+          "source": "1400 componente electronice active si pasive, Bitmi 11303 (https://www.bitmi.ro/electronica/set-de-1400-componente-electronice-active-pasive-bitmi-11303.html)",
+          "image": "https://gomagcdn.ro/domains/bitmi.ro/files/product/large/bitmi-set-de-1400-componente-electronice-active-si-pasive-bitmi-11303-p4-867092.png",
+          "subject": " Bitmi 1400 Electronic Components Kit"
+        },
+        {
+          "source": "Buy Electronic Component Kit Online in India | Robocraze (https://robocraze.com/products/basic-component-kit-for-projects)",
+          "image": "https://robocraze.com/cdn/shop/products/basic_comp_main.jpg?v=1743774643",
+          "subject": " Basic Electronic Component Kit"
+        }
+      ]
+    }
+  ]
+}

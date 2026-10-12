@@ -9,12 +9,12 @@ A personal workbench for electronic components. Search for a part by ID, name, t
 - Email/password accounts, optional 30-day remembered sessions and recovery keys.
 - Required part ID, picture and whole-number quantity. Names, type, purpose, location and notes are optional.
 - Upload, drop or paste pictures; images are resized and re-encoded as WebP.
-- Purpose groups suggested from usage, with manual overrides.
+- 56 specific component groups across eight families, suggested from type and ID with manual overrides. Usage remains searchable.
 - Search across groups, exact-ID ranking, stock filters, sorting, list and picture views.
 - One-click stock changes and bulk add/use controls. Zero-stock components remain in the collection.
 - Private component URLs and images. Accounts may use the same part ID without sharing stock.
-- Desktop-first open component shelf, horizontal purpose filters, borderless transparent pictures and a focused stock inspector with image zoom.
-- Bauhaus geometry and printed-comic colors, Bricolage Grotesque typography, an original interactive exploded IC drawing, Motion layout transitions and Anime.js line animation. Local fonts and reduced-motion support.
+- Desktop home with large search and four illustrated group posters per row. Drag horizontally within a family and scroll vertically for more families. Esc preserves the home browsing position.
+- Bauhaus geometry and printed-comic colors, local Bricolage Grotesque typography, borderless part photos and a stock inspector with zoom. Lenis scrolling, footer reveal, hiding header, iris/pixel transitions, username scramble and iOS-inspired pointer feedback. Reduced-motion support.
 - Keyboard shortcuts: `/` or `Ctrl K` to search, `N` to add a part, Enter to open a single result or create an unknown ID, Escape to close the inspector. List/grid preference is remembered on each device.
 
 ## Run locally
