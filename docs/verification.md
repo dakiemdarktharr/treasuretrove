@@ -28,4 +28,6 @@ All end-to-end fixtures belong to uniquely named disposable test accounts. The s
 - Server-only MongoDB credentials remain in local/Vercel environment variables.
 - The owner-approved Atlas network rule is active; authentication and TLS remain required.
 
-Production verification for this catalog revision is recorded after deployment.
+Production deployment `dpl_4UUoXK4JEu5BQAGUUh74wMMpK8gA` is ready at the public URL. All five end-to-end scenarios passed against production in **41.0 seconds**, with no browser page errors. GitHub Actions passed for implementation commit `e657cd2` and packaging commit `49a3b3f`. The production dependency audit reports zero vulnerabilities. The temporary visual-review account and all disposable test accounts, parts and sessions were removed after verification.
+
+`.vercelignore` excludes local research downloads, environment files and test traces from deployment uploads. The final upload contains 63 source/asset files; the app serves only the finished poster artwork, not the research originals.
